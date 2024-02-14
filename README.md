@@ -8,6 +8,7 @@
 - [ ] Xiao BLE Sense
 - [ ] Faire le planning
 - [ ] Circuit imprimé ?
+    * [ ] outil éventuel [kicad](https://www.kicad.org/)
 - [ ] I2C
 - [ ] Logiciel MIDI to Sound (Abbleton, MuseScore, etc.)
 

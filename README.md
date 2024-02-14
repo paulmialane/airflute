@@ -11,25 +11,26 @@
     * [ ] outil éventuel [kicad](https://www.kicad.org/)
 - [ ] I2C
 - [ ] Logiciel MIDI to Sound (Abbleton, MuseScore, etc.)
+- [x] Conventions programmation.
 
 ### Planning :
 | Date  | À faire avant la séance  | À faire pendant la séance |
 | :- |:-| :-|
-| 28 fevrier | Découverte du rôle (savoir où on va) | Planning fini |
-| 13 mars | Convention pour le code |  |
-| 20 mars |  | Visualisation des capteurs finie (ON/OFF), MIDI utilisable |
+| 28 fevrier |Découverte du rôle (savoir où on va) : <ul> <li> [ ] Paul</li> <li> [ ] Justine</li><li> [ ] Lucas</li> </ul> | <ul><li> [ ] Planning fini</li></ul> |
+| 13 mars |  <ul> <li> [x] Conventions pour le code</li></ul> |  |
+| 20 mars |  | <ul> <li> [ ] Visualisation des capteurs finie (ON/OFF)</li> <li> [ ] MIDI utilisable</li></ul> |
 | 26 mars |  | évaluation ? |
 | 2 avril |  | évaluation ? |
 | 9 avril |  | évaluation ? |
-| 24 avril |  | Zephyr fonctionne (Hello World) | 
-| 2 mai | | Recherches pour le BLE |
-| 7 mai |  | Construction du Shield pour les capteurs |
+| 24 avril |  | <ul> <li> [ ] Zephyr fonctionne (Hello World)</li></ul> | 
+| 2 mai | | <ul> <li> [ ] Recherches pour le BLE </li></ul> |
+| 7 mai |  | <ul> <li> [ ] Construction du Shield pour les capteurs </li></ul> |
 | 15 mai |  | Justine pas là | 
 | 22 mai |  |  | # à donner quand on saura ce qu'on fait
 | 29 mai |  |  |
 | 5 juin |  |  |
 | 12 juin |  |  |
-| 24-28 juin | Tous les modules sont prêts | Intégration des parties étudiées|
+| 24-28 juin | <ul> <li> [ ] Tous les modules sont prêts </li></ul>  | <ul> <li> [ ] Intégration des parties étudiées </li></ul> |
 
 
 ### Repartition
@@ -47,4 +48,3 @@
 
 
 ### Priorités 
-

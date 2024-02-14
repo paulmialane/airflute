@@ -11,10 +11,8 @@
 ### Planning :
 | Date  | À faire avant la séance  | À faire pendant la séance |
 | :----------- |:---------------| :----------------|
-
 |1er mars | le planning global est fini| |
 | 24 juin | toutes les fonctionnalités sont prêtes à être assemblées| |
-
 | 28 fevrier | planning fini |  |
 | 13 mars |  |  |
 | 20 mars |  |  |

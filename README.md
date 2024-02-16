@@ -1,5 +1,10 @@
 # AirFlute
 
+### Documents
+
+- [Compte rendu des séances](documents/SUIVI.md)
+- [Convention de codage](documents/Conventions_Codage.md)
+
 ### TODO :
 - [ ] Regarder le protocole MIDI
 - [ ] Regarder comment fonctionne le BLE (Bluetooth Low Energy)

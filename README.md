@@ -2,7 +2,7 @@
 
 ### Documents
 
-- [Compte rendu des séances](documents/SUIVI.md)
+- [Compte rendu des séances](SUIVI.md)
 - [Convention de codage](documents/Conventions_Codage.md)
 
 ### TODO :

@@ -29,7 +29,7 @@
 | 9 avril |  | évaluation ? / On continue notre travail|
 | 24 avril |  | <ul> <li> [ ] Zephyr fonctionne (Hello World)</li></ul> | 
 | 2 mai | | <ul> <li> [ ] Recherches pour le BLE </li></ul> |
-| 7 mai | <ul> <li> [ ] Prototype fonctionnel pour la détection du souffle </li></ul> | <ul> <li> [ ] Construction du Shield pour les capteurs </li></ul> |
+| 7 mai | <ul> <li> [ ] Prototype fonctionnel pour la détection du souffle </li></ul> | <ul> <li> [ ] Construction du Shield pour les capteurs </li></ul>|
 | 15 mai |  |  | 
 | 22 mai |  | <ul> <li> [ ] Tous les capteurs sont montés, testés </li></ul> | # à donner quand on saura ce qu'on fait
 | 29 mai |  | <ul> <li> [ ] Modèle 3d complet </li></ul> |

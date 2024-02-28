@@ -14,5 +14,5 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Découverte du capteur infrarouge et test de démonstration 
 - Découverte du convertisseur I2C 
 - Plannification 
-- Hello world sur la carte et ...
+- Hello world sur la carte et configuration de l'ordi de Paul pour programmer la carte
 - Avancement des recherche sur le MIDI et comment l'envoyer/recevoir

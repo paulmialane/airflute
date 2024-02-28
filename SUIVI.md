@@ -10,3 +10,9 @@
 
 Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les différents aspects du projet pour pouvoir estimer la durée et le travail nécessaires et donc préciser notre planning.
 
+### Séance 28/02
+- Découverte du capteur infrarouge et test de démonstration 
+- Découverte du convertisseur I2C 
+- Plannification 
+- Hello world sur la carte et ...
+- Avancement des recherche sur le MIDI et comment l'envoyer/recevoir

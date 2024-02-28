@@ -43,14 +43,14 @@
 | Tache | Responsable |
 | :- |:-|
 | Regarder le protocole MIDI | Justine |
-| Regarder le fonctionnement BLE | Paul |
-| Conventions pour l'ecriture du code | Paul |
+| Regarder le fonctionnement BLE | Justine |
 | Tester les capteurs | Lucas |
-| Zephyr RTOS | Paul |
+| Zephyr RTOS | Paul/Justine |
 | XIAO BLE Sense | Justine |
-| Faire le planning | Lucas |
-| I2C | Lucas |
-| Modèle 3D | Lucas |
+| I2C | Lucas/Paul |
+| Modèles 3D | Lucas |
+| Capteur Souffle | Lucas |
+| Capteurs pour les doigts | Paul |
 
 
 ### Priorités 

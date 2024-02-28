@@ -21,7 +21,7 @@
 ### Planning :
 | Date  | À faire avant la séance  | À faire pendant la séance |
 | :- |:-| :-|
-| 28 fevrier |Découverte du rôle (savoir où on va) : <ul> <li> [ ] Paul</li> <li> [ ] Justine</li><li> [ ] Lucas</li> </ul> | <ul><li> [ ] Planning fini</li></ul> |
+| 28 fevrier |Découverte du rôle (savoir où on va) : <ul> <li> [ ] Paul</li> <li> [ ] Justine</li><li> [x] Lucas</li> </ul> | <ul><li> [ ] Planning fini</li></ul> |
 | 13 mars |  <ul> <li> [x] Conventions pour le code</li></ul> |  |
 | 20 mars |  | <ul> <li> [ ] Visualisation des capteurs finie (ON/OFF)</li> <li> [ ] MIDI utilisable</li></ul> |
 | 26 mars |  | évaluation ? |

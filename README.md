@@ -22,7 +22,7 @@
 | Date  | À faire avant la séance  | À faire pendant la séance |
 | :- |:-| :-|
 | 28 fevrier |Découverte du rôle (savoir où on va) : <ul> <li> [ ] Paul</li> <li> [x] Justine</li><li> [x] Lucas</li> </ul> | <ul><li> [ ] Planning fini</li></ul> |
-| 13 mars |  <ul> <li> [x] Conventions pour le code</li></ul> | Justine pas là |
+| 13 mars |  <ul> <li> [x] Conventions pour le code</li></ul> <ul> <li> [ ] Savoir envoyer du MIDI depuis la carte vers un ordinateur (et l'interpréter) </li> </ul> | Justine pas là |
 | 20 mars |  | <ul> <li> [ ] Visualisation des capteurs finie (ON/OFF)</li> <li> [ ] MIDI utilisable </li><li> [ ] Début des recherches sur la détection du souffle </li></ul> |
 | 26 mars |  | évaluation ? / On continue notre travail|
 | 2 avril |  | évaluation ? / On continue notre travail|

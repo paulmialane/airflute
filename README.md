@@ -57,3 +57,13 @@
 | Modèles 3D | Lucas | Avoir une pièce en 3d utilisable (tous les capteurs, circuits et cables passent) |
 | Capteur Souffle | Lucas | Réussir à utiliser le capteur de distance pour savoir si on souffle (puis plus tard la puissance du souffle) |
 | Capteurs pour les doigts | Paul | Detecter depuis la XIAO si le capteur est recouvert ou non |
+
+### Remarques:
+
+- On voit mal le lien entre les tâches et les activités concrètes des séances
+- Il faut déterminer des dates limites et des livrables concrèts (logiciel, documents, ...) pour les tâches
+- Est-ce que les tâches sont séquentielles ou vous pouvez paralleliser des choses ?
+- Quelles sont les dépendances entre les tâches ?
+- Est-ce qu'il y a des tâches optionnelles ? 
+- Détaillez / découpez la partie MIDI BLE en plusieurs objectifs (jouer une note en boucle, jouer une note déclenchée par un bouton, ...)
+- Rajoutez des objectifs optionnels (effets en utilisant les autres capteurs de la carte - micro / accéléromètre, ...)

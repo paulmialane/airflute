@@ -1,1 +1,0 @@
-"mcuboot":"/home/paulm/Documents/TélécomParis/1A/ARTISHOW/zephyr/bootloader/mcuboot":"/home/paulm/Documents/TélécomParis/1A/ARTISHOW/zephyr/bootloader/mcuboot/boot/zephyr/sysbuild"

@@ -13,8 +13,9 @@
 - [ ] Fonctionnement MIDI par BLE
 - [ ] Gros programme qui boucle, récupère l'état des capteurs, envoie le MIDI "corrrespondant"
     * [ ] sous-programme qui décide de la note à envoyer selon les capteurs
-- [ ] Tester les capteurs (en particulier développer un capteur de pression)
-- [ ] Zephyr RTOS
+- [x] Detecter un capteur bouché
+- [ ] Développer un capteur de pression)
+- [x] Zephyr RTOS
 - [ ] Xiao BLE Sense
 - [x] Faire le planning
 - [ ] Circuit imprimé ?
@@ -27,9 +28,9 @@
 ### Planning :
 | Date  | À faire avant la séance  | À faire pendant la séance |
 | :- |:-| :-|
-| 28 fevrier |Découverte du rôle (savoir où on va) : <ul> <li> [ ] Paul</li> <li> [x] Justine</li><li> [x] Lucas</li> </ul> | <ul><li> [ ] Planning fini</li></ul> |
-| 13 mars |  <ul> <li> [ ] Zephyr correctement installé chez tout le monde</li> </ul> | <ul> Justine absente !!😥  <li> [ ] Détecter le fait qu'un capteur est bouché</li></ul> |
-| 20 mars | <ul> <li> [ ] Savoir présenter la carte come USB MIDI Device à un ordi </li> <li> [ ] Regarder comment brancher les capteurs de doigts en utilisant un bus I2C </li> </ul> | <ul> <li> [ ] Premier prototype pour le souffle imprimé </li> </ul> |
+| 28 fevrier |Découverte du rôle (savoir où on va) : <ul> <li> [x] Paul</li> <li> [x] Justine</li><li> [x] Lucas</li> </ul> | <ul><li> [ ] Planning fini</li></ul> |
+| 13 mars |  <ul> <li> [x] Zephyr correctement installé chez tout le monde</li> </ul> | <ul> Justine absente !!😥  <li> [x] Détecter le fait qu'un capteur est bouché</li></ul> |
+| 20 mars | <ul> <li> [ ] Savoir présenter la carte come USB MIDI Device à un ordi </li> <li> [x] Regarder comment brancher les capteurs de doigts en utilisant un bus I2C </li> </ul> | <ul> <li> [x] Premier prototype pour le souffle imprimé </li> </ul> |
 | 26 mars | <ul> <li> [ ] Savoir envoyer une note si un capteur est bouché (ON/OFF) </li> </ul> | <ul> <li> [ ] Création et envoi d'une note en MIDI en fonction des capteurs bouchés </li> </ul> |
 | 2 avril |  | <ul> <li> évaluation intermédiaire? (être capable de jouer 1 note si un capteur est bouché ?) </li> </ul> |
 | 9 avril |  | <ul> <li> évaluation intermédiaire? (être capable de jouer 1 note si un capteur est bouché ?) </li> </ul> |

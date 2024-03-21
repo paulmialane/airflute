@@ -16,3 +16,16 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Plannification 
 - Hello world sur la carte et configuration de l'ordi de Paul pour programmer la carte
 - Avancement des recherche sur le MIDI et comment l'envoyer/recevoir
+
+### Séance du 13/03
+
+- Premiers prototypes de bec de flute a l'imprimante 3D
+- Recherche de la "bonne" résistance coté phototransistor pour détecter la présence d'un doigt
+- Montage avec soudure du capteur au FabLab
+- Presque capable de detecter le capteur bouché sur la XIAO
+
+### Séance du 20/03
+
+- Programme de test fonctionnel, on peut detecter un capteur bouché via pin GPIO
+- Première prise en main de l'I2C
+- Recherche d'une biblioteque pour le MIDI via USB

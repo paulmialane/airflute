@@ -10,10 +10,10 @@
 // To avoid oscillations, we wait for the button to stabilize
 #define DEBOUNCE_TIMEOUT_MS 100
 
-#define LED0 DT_NODELABEL(led0)
-#define GPIO_PIN 29
+#define LED0 DT_ALIAS(led0)
+#define SW0 DT_ALIAS(sw0)
 
-const struct device *gpio0_dev = DEVICE_DT_GET(DT_NODELABEL(gpio0));
+const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(SW0, gpios);
 const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0, gpios);
 
 uint64_t last_time = 0;
@@ -22,7 +22,7 @@ struct gpio_callback button_cb_data;
 void button_callback(const struct device *dev,
 	struct gpio_callback *cb, uint32_t pins)
 {
-  int state = gpio_pin_get(dev, GPIO_PIN);
+  int state = gpio_pin_get_dt(&button);
   uint64_t now = k_uptime_get();
   if ((now - last_time) > DEBOUNCE_TIMEOUT_MS)
   {
@@ -46,13 +46,13 @@ void main(void)
   gpio_pin_configure_dt(&led, GPIO_OUTPUT);
   gpio_pin_toggle_dt(&led);
   // Configure the button pin as input
-  gpio_pin_configure(gpio0_dev, GPIO_PIN, GPIO_INPUT);
+  gpio_pin_configure_dt(&button, GPIO_INPUT);
 
   // Configure the interrupt on button press (pin goes from high to low)
-  gpio_pin_interrupt_configure(gpio0_dev, GPIO_PIN, GPIO_INT_EDGE_BOTH);
+  gpio_pin_interrupt_configure_dt(&button, GPIO_INT_EDGE_BOTH);
 
   // Setup the button press callback
-  gpio_init_callback(&button_cb_data, button_callback, BIT(GPIO_PIN));
-  gpio_add_callback(gpio0_dev, &button_cb_data);
+  gpio_init_callback(&button_cb_data, button_callback, BIT(button.pin));
+  gpio_add_callback(button.port, &button_cb_data);
 }
 

@@ -15,7 +15,8 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Découverte du convertisseur I2C 
 - Plannification 
 - Hello world sur la carte et configuration de l'ordi de Paul pour programmer la carte
-- Avancement des recherche sur le MIDI et comment l'envoyer/recevoir
+- Avancement des recherches sur le MIDI et comment l'envoyer/recevoir (cf. fichier Protocole_Midi.md)
+- Seule bibliotheque MIDI par USB trouvee : zephyr-usb-midi
 
 ### Séance du 13/03
 
@@ -28,4 +29,5 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 
 - Programme de test fonctionnel, on peut detecter un capteur bouché via pin GPIO
 - Première prise en main de l'I2C
-- Recherche d'une biblioteque pour le MIDI via USB
+- Recherche d'une bibliotheque pour le MIDI via USB
+- Test de la bibliotheque zephyr-usb-midi, problemes detectes

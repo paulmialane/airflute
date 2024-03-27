@@ -14,7 +14,7 @@
 - [ ] Gros programme qui boucle, récupère l'état des capteurs, envoie le MIDI "corrrespondant"
     * [ ] sous-programme qui décide de la note à envoyer selon les capteurs
 - [x] Detecter un capteur bouché
-- [ ] Développer un capteur de pression)
+- [ ] Développer un capteur de pression
 - [x] Zephyr RTOS
 - [ ] Xiao BLE Sense
 - [x] Faire le planning

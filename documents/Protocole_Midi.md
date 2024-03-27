@@ -19,6 +19,10 @@ We can also use a velocity (loudness) of 0 in a note on to implicitly turn it in
 So actually the only thing we need for a first prototype is a __Note on__ command.  
 
 
+### Representation of notes by numbers : 
+
+La gamme commence à Do donc C = 0 modulo 12
+Ensuite on augmente demi-ton par demi-ton
 
 
 

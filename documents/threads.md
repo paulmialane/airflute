@@ -34,4 +34,27 @@ Il faut
  #include <thread.h>
 ```
 
-Pour transmettre des messages entre les threads, on peut utiliser des Message Queues : FIFO, options disponibles pour attendre un certain temps (timeout) ou jusqu'à ce qu'un message soit disponible à la lecture (K_FOREVER). On peut même lire le message sans l'enlever de la Queue.
+Pour transmettre des messages entre les threads, on peut utiliser des Message Queues (fonctionnement en FIFO)
+
+Pour define et initialize une Message Queue rapidement : 
+```
+K_MSGQ_DEFINE(q_name, q_msg_size, q_max_msgs, q_align)
+```
+
+Ensuite on y accède avec : 
+```
+extern struct k_msgq <name>;
+```
+
+Pour écrire : 
+```
+int k_msgq_put(struct k_msgq *msgq, const void *data, k_timeout_t timeout)
+```
+Renvoie 0 quand le message a bien été envoyé.
+
+Pour lire : 
+```
+k_msgq_get(struct k_msgq *msgq, void *data, k_timeout_t timeout)
+```
+timeout K_FOREVER pour attendre indéfiniment tant qu'il n'y a pas de message 
+Renvoie 0 quand le message a bien été lu.

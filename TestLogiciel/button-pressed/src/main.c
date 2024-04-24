@@ -39,7 +39,7 @@ void button_callback(const struct device *dev,
 }
 
 
-void main(void)
+int main(void)
 {
 
   // Configure the LED pin as output

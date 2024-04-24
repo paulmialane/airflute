@@ -31,3 +31,22 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Première prise en main de l'I2C
 - Recherche d'une bibliotheque pour le MIDI via USB
 - Test de la bibliotheque zephyr-usb-midi, problemes detectes
+
+### Séance du 26/03
+
+- Tentatives de debug de la bibliotheque zephyr-usb-midi pour notre carte
+- Premiers programmes sur la carte STM32 sur laquelle zephyr-usb-midi fonctionne ; on arrive a etre detecte en tant que MIDI device, a envoyer la meme note en boucle
+
+### Séance du 02/04
+
+- Sur la carte STM32 : envoi d'une note declenche par un bouton, plusieurs methodes de decision ; tentative d'utilisation d'un bouton optique pour déclencher l'envoi : echec (problemes d'overlay)
+- Tentatives de debug de la bibliotheque zephyr-usb-midi pour notre carte
+
+### Séance du 09/04
+
+- Essai de la bibliotheque zephyr-ble-midi pour la carte XIAO BLE sense, problemes
+- Encore des essais d'utilisation du bouton optique pour declencher l'envoi de notes sur la carte STM32 
+- Renseignement sur les threads et messages queues pour l'organisation du code general
+
+
+

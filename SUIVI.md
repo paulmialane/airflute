@@ -52,5 +52,8 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Tests sur le module de détection du souffle
 - Programmation d’un premier fichier d’essai pour l’I2C ; compréhension de la forme d’un devicetree (overlay et config)
 
+### Séance du 24/04
+
+- Code pour me familiariser avec les threads + les FIFOs pour communiquer entre les threads
 
 

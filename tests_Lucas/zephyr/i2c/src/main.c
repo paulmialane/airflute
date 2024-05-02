@@ -8,11 +8,18 @@ static const struct device * const ext_gpio_1 = DEVICE_DT_GET(EXT_GPIO_CTRL_1);
 
 #define SLEEP_TIME_MS 1000
 
+int getBit(int n, int k)
+{
+    return (n & (1<<k)) != 0;
+}
+
+
 int main(void) { //ça semble important que ça soit un int
     // pas vraiment besoin de configurer les pins en entrée pour le PCF8574,
     // il faut juste éviter d'écrire dessus
     // une variable pour récupérer la valeur du GPIO
     gpio_port_value_t val_gpio_1; // devrait être de type gpio_port_value_t (était un int)
+    bool buttons_pressed[8];
 
     k_msleep(SLEEP_TIME_MS);
     printk("coucou\n");
@@ -28,7 +35,18 @@ int main(void) { //ça semble important que ça soit un int
     while (1){
             gpio_port_get(ext_gpio_1, &val_gpio_1); // ou gpio_pin_get(...) si on veut juste une des pins
 
-            printk("--> %02x\n",val_gpio_1);
+            for (int k = 7; k>=0; k--){
+                buttons_pressed[k]=getBit(val_gpio_1,k);
+                //printk(" %d ;",getBit(val_gpio_1,k));
+            }
+
+
+            //printk("--> %02x\n",val_gpio_1);
+            
+            for (int k = 0; k<=7; k++){
+                printk(" %d ;",buttons_pressed[k]);
+            }
+
             k_msleep(SLEEP_TIME_MS);
     }
 }

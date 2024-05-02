@@ -23,6 +23,8 @@ struct adc_sequence sequence = {
 int main(void)
 {
 
+   int err;
+
   // Configure the LED pin as output
   gpio_pin_configure_dt(&led, GPIO_OUTPUT);
   gpio_pin_toggle_dt(&led);
@@ -33,15 +35,27 @@ int main(void)
   else
     printf("ADC NOT ready\n");
 
-  adc_channel_setup_dt(&adc_a0);
-  adc_sequence_init_dt(&adc_a0, &sequence);
+   err = adc_channel_setup_dt(&adc_a0);
+   if (err < 0) {
+      printk("Error in ADC setup (%d)\n", err);
+      return err;
+   }
+   err = adc_sequence_init_dt(&adc_a0, &sequence);
+   if (err < 0) {
+      printk("Error in the ADC sequence initialization (%d)\n", err);
+      return err;
+   }
 
-while (1){
-  adc_read(adc_a0.dev, &sequence);
-  printf("%x\n",buf);
-   k_msleep(5000);
-
-}
+   while (1){
+      err = adc_read(adc_a0.dev, &sequence);
+      if (err < 0) {
+         printk("Error reading the ADC (#%d)", err);
+         continue;
+      } else {
+         printk("A0 --> 0x%04x\n", buf);
+      }
+      k_msleep(500);
+   }
 
 
 

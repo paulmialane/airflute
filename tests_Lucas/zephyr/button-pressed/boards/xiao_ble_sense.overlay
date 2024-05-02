@@ -1,0 +1,33 @@
+/ {
+	aliases {
+		sw0 = &user_button;
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button: button_0 {
+			label = "User";
+			gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+		};
+	};
+};
+
+/ {
+    zephyr,user {
+        io-channels = <&adc 0>;
+    };
+};
+
+&adc {
+   #address-cells = <1>;
+   #size-cells = <0>;
+
+   channel@0 {
+       reg = <0>;
+       zephyr,gain = "ADC_GAIN_1_2";
+       zephyr,reference = "ADC_REF_INTERNAL";
+       zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+       zephyr,input-positive = <NRF_SAADC_AIN0>;
+       zephyr,resolution = <12>;
+   };
+};

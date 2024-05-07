@@ -52,9 +52,9 @@ int main(void)
          printk("Error reading the ADC (#%d)", err);
          continue;
       } else {
-         printk("A0 --> 0x%04x\n", buf);
+         printk("%i\n", buf);
       }
-      k_msleep(500);
+      k_msleep(100);
    }
 
 

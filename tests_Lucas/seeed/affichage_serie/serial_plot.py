@@ -7,7 +7,7 @@ import serial
 
 #initialize serial port
 ser = serial.Serial()
-ser.port = '/dev/tty' #Arduino serial port à modifier
+ser.port = '/dev/tty.usbmodem101' #Arduino serial port à modifier
 '''
 ser.baudrate = 9600
 ser.timeout = 1 #specify timeout when using readline()

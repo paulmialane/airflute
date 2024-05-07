@@ -11,49 +11,49 @@
 Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les différents aspects du projet pour pouvoir estimer la durée et le travail nécessaires et donc préciser notre planning.
 
 ### Séance 28/02
-- Découverte du capteur infrarouge et test de démonstration 
-- Découverte du convertisseur I2C 
-- Plannification 
-- Hello world sur la carte et configuration de l'ordi de Paul pour programmer la carte
-- Avancement des recherches sur le MIDI et comment l'envoyer/recevoir (cf. fichier Protocole_Midi.md)
-- Seule bibliotheque MIDI par USB trouvee : zephyr-usb-midi
+- Lucas : Découverte du capteur infrarouge et test de démonstration 
+- Lucas : Découverte du convertisseur I2C 
+- Paul : Plannification 
+- Paul : Hello world sur la carte et configuration de l'ordi de Paul pour programmer la carte
+- Justine : Avancement des recherches sur le MIDI et comment l'envoyer/recevoir (cf. fichier Protocole_Midi.md)
+- Justine : Seule bibliotheque MIDI par USB trouvee : zephyr-usb-midi
 
 ### Séance du 13/03
 
-- Premiers prototypes de bec de flute a l'imprimante 3D
-- Recherche de la "bonne" résistance coté phototransistor pour détecter la présence d'un doigt
-- Montage avec soudure du capteur au FabLab
-- Presque capable de detecter le capteur bouché sur la XIAO
+- Lucas : Premiers prototypes de bec de flute a l'imprimante 3D
+- Paul : Recherche de la "bonne" résistance coté phototransistor pour détecter la présence d'un doigt
+- Lucas : Montage avec soudure du capteur au FabLab
+- Paul : Presque capable de detecter le capteur bouché sur la XIAO
 
 ### Séance du 20/03
 
-- Programme de test fonctionnel, on peut detecter un capteur bouché via pin GPIO
-- Première prise en main de l'I2C
-- Recherche d'une bibliotheque pour le MIDI via USB
-- Test de la bibliotheque zephyr-usb-midi, problemes detectes
+- Lucas : Programme de test fonctionnel, on peut detecter un capteur bouché via pin GPIO
+- Lucas : Première prise en main de l'I2C
+- Justine : Recherche d'une bibliotheque pour le MIDI via USB
+- Paul : Test de la bibliotheque zephyr-usb-midi, problemes detectes
 
 ### Séance du 26/03
 
-- Tentatives de debug de la bibliotheque zephyr-usb-midi pour notre carte
-- Premiers programmes sur la carte STM32 sur laquelle zephyr-usb-midi fonctionne ; on arrive a etre detecte en tant que MIDI device, a envoyer la meme note en boucle
-- Fabrication de plusieurs capteurs optiques pour pourvoir faire des tests en parallèle
+- Paul : Tentatives de debug de la bibliotheque zephyr-usb-midi pour notre carte
+- Justine : Premiers programmes sur la carte STM32 sur laquelle zephyr-usb-midi fonctionne ; on arrive a etre detecte en tant que MIDI device, a envoyer la meme note en boucle
+- Lucas : Fabrication de plusieurs capteurs optiques pour pourvoir faire des tests en parallèle
 
 ### Séance du 02/04
 
-- Sur la carte STM32 : envoi d'une note declenche par un bouton, plusieurs methodes de decision ; tentative d'utilisation d'un bouton optique pour déclencher l'envoi : echec (problemes d'overlay)
-- Tentatives de debug de la bibliotheque zephyr-usb-midi pour notre carte
-- Conception de bec en PVC et du module de détection du souffle
+- Justine : Sur la carte STM32 : envoi d'une note declenche par un bouton, plusieurs methodes de decision ; tentative d'utilisation d'un bouton optique pour déclencher l'envoi : echec (problemes d'overlay)
+- Paul : Tentatives de debug de la bibliotheque zephyr-usb-midi pour notre carte
+- Lucas : Conception de bec en PVC et du module de détection du souffle
 
 ### Séance du 09/04
 
-- Essai de la bibliotheque zephyr-ble-midi pour la carte XIAO BLE sense, problemes
+- Paul : Essai de la bibliotheque zephyr-ble-midi pour la carte XIAO BLE sense, problemes
 - Encore des essais d'utilisation du bouton optique pour declencher l'envoi de notes sur la carte STM32 
-- Renseignement sur les threads et messages queues pour l'organisation du code general
-- Tests sur le module de détection du souffle
-- Programmation d’un premier fichier d’essai pour l’I2C ; compréhension de la forme d’un devicetree (overlay et config)
+- Justine : Renseignement sur les threads et messages queues pour l'organisation du code general
+- Lucas : Tests sur le module de détection du souffle
+- Lucas : Programmation d’un premier fichier d’essai pour l’I2C ; compréhension de la forme d’un devicetree (overlay et config)
 
 ### Séance du 24/04
 
-- Code pour me familiariser avec les threads + les FIFOs pour communiquer entre les threads
+- Justine : Code pour me familiariser avec les threads + les FIFOs pour communiquer entre les threads
 
 

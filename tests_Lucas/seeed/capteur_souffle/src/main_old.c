@@ -2,7 +2,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/adc.h>
-#include <math.h>
 
 
 #define LED0 DT_ALIAS(led0)
@@ -21,39 +20,16 @@ struct adc_sequence sequence = {
 		//.calibrate = true,
 	};
 
-
-int init_capteur(int err){
-   int moyenne=0;
-   int longueur = 100;
-   for (int i =0; i<longueur-1; i++){
-      err = adc_read(adc_a0.dev, &sequence);
-      moyenne += buf; 
-      k_msleep(10);
-   }
-   return (int) moyenne/longueur;
-}
-
-int filtre(int data, int reference){//pas mal de travail ici
-   if (data>reference-100){
-      return 0;
-   }
-   else if (reference-data>256) {
-      return pow(256,2);
-   }
-   
-   printk("données référence : %i   données capteur :%i \n",reference, data);
-   return (int) pow(reference-data,2);
-}
-
 int main(void)
 {
+
    int err;
 
   // Configure the LED pin as output
   gpio_pin_configure_dt(&led, GPIO_OUTPUT);
   gpio_pin_toggle_dt(&led);
-
   // Configure the button pin as input
+  
   if(adc_is_ready_dt(&adc_a0))
     printf("ADC is ready\n");
   else
@@ -70,21 +46,17 @@ int main(void)
       return err;
    }
 
-
-   int reference = init_capteur(err);
-   printf("capteur initialisé à %i\n",reference);
-   int data_out;
-
    while (1){
       err = adc_read(adc_a0.dev, &sequence);
       if (err < 0) {
          printk("Error reading the ADC (#%d)", err);
          continue;
       } else {
-         data_out = filtre(buf, reference);
-         printk("%i\n", data_out);
+         printk("%i\n", buf);
       }
-      k_msleep(500);
+      k_msleep(10);
    }
+
+
 
 }

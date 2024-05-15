@@ -54,7 +54,7 @@ int main(void)
       } else {
          printk("%i\n", buf);
       }
-      k_msleep(100);
+      k_msleep(10);
    }
 
 

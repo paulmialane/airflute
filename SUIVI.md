@@ -55,5 +55,16 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 ### Séance du 24/04
 
 - Justine : Code pour me familiariser avec les threads + les FIFOs pour communiquer entre les threads
+- Lucas : Code pour la lecture en I2C fonctionnel
 
+### Séance du 02/05
 
+- Lucas : Gestion des valeur obtenues en I2C et commencement de la lecture analogique (capteur de souffle)
+
+### Séance du 07/05
+
+- Lucas : Mise en forme des données capteurs (courbes pour calibrer le souffle)
+
+### Séance du 15/05
+
+- Lucas : calibration du capteur de souffle et filtrage des données

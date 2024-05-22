@@ -1,0 +1,10 @@
+.DS_Store
+build*
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+*.out
+*.dSYM
+ble_midi_packet_test
+!ble_midi_packet_test.c

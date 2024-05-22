@@ -18,6 +18,7 @@
 
 struct printk_data_t {
 	void *fifo_reserved; /* 1st word reserved for use by fifo */
+	bool on;
 	int *buttons;
 	int strength;
 	int note;
@@ -26,6 +27,7 @@ struct printk_data_t {
 
 K_FIFO_DEFINE(buttons_combination);
 K_FIFO_DEFINE(note_to_play);
+K_FIFO_DEFINE(currently_playing);
 
 
 
@@ -34,23 +36,13 @@ K_FIFO_DEFINE(note_to_play);
 
 void test_buttons(void){
 	while(1){
-		k_msleep(1000);
 
-		int souffle = souffle_yes_no();
+		k_msleep(100);
 
-		if (souffle){
-			int *combi = is_pressed();
-			int force = souffle_force();
 
-			struct printk_data_t tx_data = { .buttons = combi , .strength = force , .note = NULL};
 
-			size_t size = sizeof(struct printk_data_t);
-			char *mem_ptr = k_malloc(size);
-			__ASSERT_NO_MSG(mem_ptr != 0);
+		if(souffle)
 
-			memcpy(mem_ptr, &tx_data, size);
-
-			k_fifo_put(&buttons_combination, mem_ptr);
 		}
 		
 	}
@@ -90,7 +82,12 @@ void play_note(void){
 	while(1){
 		struct printk_data_t *rx_data = k_fifo_get(&note_to_play, K_FOREVER);
 
+		int note = rx_data->note;
+		int force = rx_data->strength;
 
+		k_free(rx_data);
+
+		joue(note, force);
 
 	}
 }

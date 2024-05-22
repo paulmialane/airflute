@@ -34,7 +34,7 @@ int init_capteur(int err){
 }
 
 int filtre(int data, int reference){//pas mal de travail ici
-   if (data>reference-100){
+   if (data>reference-50){
       return 0;
    }
    else if (reference-data>256) {

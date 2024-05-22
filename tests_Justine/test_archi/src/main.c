@@ -7,6 +7,7 @@
 #include "button_pressed.h"
 #include "decide_note.h"
 #include "capteur_souffle.h"
+#include "joue_note.h"
 
 /* size of stack area used by each thread */
 #define STACKSIZE 1024
@@ -87,6 +88,9 @@ void choose_note(void){
 
 void play_note(void){
 	while(1){
-		
+		struct printk_data_t *rx_data = k_fifo_get(&note_to_play, K_FOREVER);
+
+
+
 	}
 }

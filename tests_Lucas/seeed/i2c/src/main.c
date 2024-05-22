@@ -35,6 +35,7 @@ int main(void) { //ça semble important que ça soit un int
     while (1){
             gpio_port_get(ext_gpio_1, &val_gpio_1); // ou gpio_pin_get(...) si on veut juste une des pins
 
+            //conversion en liste de booléens
             for (int k = 7; k>=0; k--){
                 buttons_pressed[k]=getBit(val_gpio_1,k);
                 //printk(" %d ;",getBit(val_gpio_1,k));
@@ -43,10 +44,12 @@ int main(void) { //ça semble important que ça soit un int
 
             //printk("--> %02x\n",val_gpio_1);
             
+            //partie moniteur
             for (int k = 0; k<=7; k++){
                 printk(" %d ;",buttons_pressed[k]);
             }
 
+            
             k_msleep(SLEEP_TIME_MS);
     }
 }

@@ -13,6 +13,17 @@ int getBit(int n, int k)
     return (n & (1<<k)) != 0;
 }
 
+gpio_port_value_t val_gpio_1;
+
+
+//fonction pour le traitement
+int *is_pressed(void){
+    gpio_port_get(ext_gpio_1, &val_gpio_1);
+
+    return (int*) &val_gpio_1;
+}
+
+//main (à enlever pour l'intégration)
 
 int main(void) { //ça semble important que ça soit un int
     // pas vraiment besoin de configurer les pins en entrée pour le PCF8574,
@@ -44,10 +55,11 @@ int main(void) { //ça semble important que ça soit un int
 
             //printk("--> %02x\n",val_gpio_1);
             
-            //partie moniteur
+            //partie print
             for (int k = 0; k<=7; k++){
                 printk(" %d ;",buttons_pressed[k]);
             }
+            printk(" %x", val_gpio_1);
 
             
             k_msleep(SLEEP_TIME_MS);

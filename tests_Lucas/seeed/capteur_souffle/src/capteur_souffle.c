@@ -22,7 +22,12 @@ struct adc_sequence sequence = {
 	};
 
 
-//initialisation globale
+
+
+
+
+
+// initialisation globale
 
 int err;
 
@@ -59,8 +64,16 @@ int init_capteur(int err){
 }
 
 int reference = init_capteur(err);
-printf("capteur initialisé à %i\n",reference);
+//printf("capteur initialisé à %i\n",reference);
 int data_out;
+
+
+
+
+
+
+
+/// fonctions
 
 int souffle_yes_no(void){
    err = adc_read(adc_a0.dev, &sequence);
@@ -80,7 +93,7 @@ int filtre(int data, int reference){//pas mal de travail ici
       return pow(256,2);
    }
    
-   printk("données référence : %i   données capteur :%i \n",reference, data);
+   //printk("données référence : %i   données capteur :%i \n",reference, data);
    return (int) pow(reference-data,2);
 }
 
@@ -89,52 +102,4 @@ int souffle_force(void){
    data_out = filtre(buf, reference);
 
    return data_out;
-}
-
-int main(void)
-{
-   int err;
-
-  // Configure the LED pin as output
-  gpio_pin_configure_dt(&led, GPIO_OUTPUT);
-  gpio_pin_toggle_dt(&led);
-
-  // Configure the button pin as input
-  if(adc_is_ready_dt(&adc_a0))
-    printf("ADC is ready\n");
-  else
-    printf("ADC NOT ready\n");
-
-   err = adc_channel_setup_dt(&adc_a0);
-   if (err < 0) {
-      printk("Error in ADC setup (%d)\n", err);
-      return err;
-   }
-   err = adc_sequence_init_dt(&adc_a0, &sequence);
-   if (err < 0) {
-      printk("Error in the ADC sequence initialization (%d)\n", err);
-      return err;
-   }
-
-
-   int reference = init_capteur(err);
-   printf("capteur initialisé à %i\n",reference);
-   int data_out;
-
-   while (1){
-      err = adc_read(adc_a0.dev, &sequence);
-      
-      //partie print
-      if (err < 0) {
-         printk("Error reading the ADC (#%d)", err);
-         continue;
-      } else {
-         data_out = filtre(buf, reference);
-         printk("%i\n", data_out);
-      }
-
-      //sleep
-      k_msleep(500);
-   }
-
 }

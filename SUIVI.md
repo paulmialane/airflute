@@ -68,3 +68,7 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 ### Séance du 15/05
 
 - Lucas : calibration du capteur de souffle et filtrage des données
+
+### Séance du 22/05
+
+- Lucas : modélisation d'un bec qui peut intégrer le capteur de souffle

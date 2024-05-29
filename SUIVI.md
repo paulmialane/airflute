@@ -60,16 +60,20 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 ### Séance du 02/05
 
 - Lucas : Gestion des valeur obtenues en I2C et commencement de la lecture analogique (capteur de souffle)
+- Justine : jouer un accord en MIDI Bluetooth sur téléphone avec applications adaptées
 
 ### Séance du 07/05
 
 - Lucas : Mise en forme des données capteurs (courbes pour calibrer le souffle)
+- Justine : logique de communication entre les différentes parties du projet
 
 ### Séance du 15/05
 
 - Lucas : calibration du capteur de souffle et filtrage des données
+- Justine : écriture du programme global intégrant toutes les parties du projet
 
 ### Séance du 22/05
 
 - Lucas : modélisation d'un bec qui peut intégrer le capteur de souffle
 - Lucas : ajout des foncions utilisées pour la détection de souffle et le choix des notes
+- Justine : écriture du programme global intégrant toutes les parties du projet

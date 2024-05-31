@@ -18,8 +18,7 @@
 
 struct printk_data_t {
 	void *fifo_reserved; /* 1st word reserved for use by fifo */
-	bool on;
-	int *buttons;
+	int buttons;
 	int strength;
 	int note;
 };
@@ -28,7 +27,7 @@ struct printk_data_t {
 K_FIFO_DEFINE(buttons_combination);
 K_FIFO_DEFINE(note_to_play);
 K_FIFO_DEFINE(currently_playing);
-
+K_FIFO_DEFINE(stop_playing);
 
 
 ///////////////////////////button_pressed main///////////////////////////////////////////////////////////
@@ -56,13 +55,13 @@ void choose_note(void){
 	while(1){
 		struct printk_data_t *rx_data = k_fifo_get(&buttons_combination, K_FOREVER);
 
-		int *combi = rx_data->buttons;
+		int combi = rx_data->buttons;
 		int chosen_note = midi_note(combi);
 		int force = rx_data->strength;
 
 		k_free(rx_data);
 
-		struct printk_data_t tx_data = { .buttons = NULL , .strength = force , .note = chosen_note};
+		struct printk_data_t tx_data = { .buttons = combi , .strength = force , .note = chosen_note};
 
 		size_t size = sizeof(struct printk_data_t);
 		char *mem_ptr = k_malloc(size);
@@ -84,10 +83,36 @@ void play_note(void){
 
 		int note = rx_data->note;
 		int force = rx_data->strength;
+		int combi = rx_data->buttons;
 
 		k_free(rx_data);
 
-		joue(note, force);
+		joue(true, note, force);
+
+		struct printk_data_t tx_data = { .buttons = combi , .strength = force , .note = note};
+
+		size_t size = sizeof(struct printk_data_t);
+		char *mem_ptr = k_malloc(size);
+		__ASSERT_NO_MSG(mem_ptr != 0);
+
+		memcpy(mem_ptr, &tx_data, size);
+
+		k_fifo_put(&currently_playing, mem_ptr);
+
+	}
+}
+
+void stop_playing_note(void){
+	while(1){
+		struct printk_data_t *rx_data = k_fifo_get(&stop_playing, K_FOREVER);
+
+		int note = rx_data->note;
+		int force = rx_data->strength;
+		int combi = rx_data->buttons;
+
+		k_free(rx_data);
+
+		joue(false, note, force);
 
 	}
 }

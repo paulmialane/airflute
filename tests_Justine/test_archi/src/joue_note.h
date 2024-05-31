@@ -1,3 +1,3 @@
 #include "joue_note.c"
 
-void joue(int note, int force);
+void joue(boolean on_off, int note, int force);

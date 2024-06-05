@@ -6,7 +6,7 @@
 //structure pour contrôler le device
 static const struct device * const ext_gpio_1 = DEVICE_DT_GET(EXT_GPIO_CTRL_1);
 
-#define SLEEP_TIME_MS 1000
+#define SLEEP_TIME_MS 100
 
 int getBit(int n, int k)
 {
@@ -30,7 +30,8 @@ int main(void) { //ça semble important que ça soit un int
     // il faut juste éviter d'écrire dessus
     // une variable pour récupérer la valeur du GPIO
     gpio_port_value_t val_gpio_1; // devrait être de type gpio_port_value_t (était un int)
-    bool buttons_pressed[8];
+    
+    bool buttons_pressed[8];// variable utilisée
 
     k_msleep(SLEEP_TIME_MS);
     printk("coucou\n");

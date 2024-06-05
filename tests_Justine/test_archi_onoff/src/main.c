@@ -18,9 +18,19 @@
 
 struct printk_data_t {
 	void *fifo_reserved; /* 1st word reserved for use by fifo */
-	int buttons;
+	int buttons[8];
 	int strength;
 	int note;
+};
+
+bool is_equal(combi1, combi2){
+	for (int i = 0; i < 8; i++)
+	{
+		if (combi1[i] != combi2[i]){
+			return false;
+		} 
+	}
+	return true;
 };
 
 
@@ -36,14 +46,67 @@ K_FIFO_DEFINE(stop_playing);
 void test_buttons(void){
 	while(1){
 
-		k_msleep(100);
+		k_msleep(500);
+		if(souffle_yes_no()){
 
+			int old_combi[8] = NULL; // On part du principe qu'il n'y a pas d'ancienne combinaison/
+			int combinaison[8] = is_pressed();
 
+			if (!k_fifo_is_empty(currently_playing)){ //S'il y en a une, on la récupère
 
-		if(souffle)
+				struct printk_data_t *rx_data = k_fifo_peep_head(currently_playing); // attention ! on ne récupère pas les données (ce qui les enlèverait de la file), on regarde juste
+
+				old_combi = rx_data->buttons;
+			}
+
+			if (!is_equal(old_combi, combinaison)){ /*On teste si la combinaison actuelle est différente de la 
+			dernière (et donc s'il faut changer de note), cela marche aussi s'il n'y a pas de dernière 
+			combinaison car on n'était pas en train de jouer*/
+
+				/*arrêter de jouer l'ancienne note*/
+
+				struct printk_data_t *rx_data = k_fifo_get(currently_playing);
+
+				size_t size = sizeof(struct printk_data_t);
+				char *mem_ptr = k_malloc(size);
+				__ASSERT_NO_MSG(mem_ptr != 0);
+
+				memcpy(mem_ptr, &rx_data, size);
+
+				k_fifo_put(&stop_playing, mem_ptr);
+
+				/*nouvelle combinaison*/
+
+				struct printk_data_t tx_data = { .buttons = combinaison, .strength = NULL, .note = NULL };
+
+				size_t size = sizeof(struct printk_data_t);
+				char *mem_ptr = k_malloc(size);
+				__ASSERT_NO_MSG(mem_ptr != 0);
+
+				memcpy(mem_ptr, &tx_data, size);
+
+				k_fifo_put(&buttons_combination, mem_ptr);
+
+			}
 
 		}
-		
+
+		else {
+			if (!k_fifo_is_empty(currently_playing)){
+
+				struct printk_data_t *rx_data = k_fifo_get(currently_playing); 
+
+				/*Ici on enlève directement de la file, car on arrête de jouer de toute manière...*/
+
+				size_t size = sizeof(struct printk_data_t);
+				char *mem_ptr = k_malloc(size);
+				__ASSERT_NO_MSG(mem_ptr != 0);
+
+				memcpy(mem_ptr, &rx_data, size);
+
+				k_fifo_put(&stop_playing, mem_ptr);
+			}
+		}
 	}
 }
 

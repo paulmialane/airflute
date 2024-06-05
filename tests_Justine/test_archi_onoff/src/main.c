@@ -4,6 +4,7 @@
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/__assert.h>
 #include <string.h>
+#include <stdio.h>
 #include "button_pressed.h"
 #include "decide_note.h"
 #include "capteur_souffle.h"
@@ -44,8 +45,8 @@ K_FIFO_DEFINE(stop_playing);
 
 
 void test_buttons(void){
-	while(1){
 
+	while(1){
 		k_msleep(500);
 		if(souffle_yes_no()){
 
@@ -178,4 +179,24 @@ void stop_playing_note(void){
 		joue(false, note, force);
 
 	}
+}
+
+
+
+
+////////////////////////////////////c'est l'heure de faire un main/////////////////////////////////////////////////
+
+
+int main(int argc, char const *argv[])
+{
+	
+	initialisation_midi();
+	printk("midi_bluetooth initialisé");
+
+	K_THREAD_DEFINE(test_buttons_id, STACKSIZE, test_buttons, NULL, NULL, NULL, PRIORITY, 0, 0);
+	K_THREAD_DEFINE(choose_note_id, STACKSIZE, choose_note, NULL, NULL, NULL, PRIORITY, 0, 0);
+	K_THREAD_DEFINE(play_note_id, STACKSIZE, play_note, NULL, NULL, NULL, PRIORITY, 0, 0);
+	K_THREAD_DEFINE(stop_playing_note_id, STACKSIZE, stop_playing_note, NULL, NULL, NULL, PRIORITY, 0, 0);
+
+	return 0;
 }

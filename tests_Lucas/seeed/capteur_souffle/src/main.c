@@ -6,8 +6,9 @@
 #include "capteur_souffle.h"
 
 int main(){
+    int data_out=0;
     while(1){
-        data_out = souffle_force(void);
+        data_out = souffle_force();
 
         printk("%i\n", data_out);
 

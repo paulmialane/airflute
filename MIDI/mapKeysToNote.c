@@ -107,7 +107,7 @@ const note_t noteArray[NB_NOTES] = {
 
 
 uint8_t fromSensorToMidiPitch(uint8_t sensorValues);
-
+int hammingDistance(uint8_t a, uint8_t b);
 
 int main() {
     uint8_t sensorValues = 0b00000010;
@@ -124,12 +124,40 @@ uint8_t fromSensorToMidiPitch(uint8_t sensorValues) {
     /*
         This function takes the sensor values and returns the MIDI pitch of the note that corresponds to the sensor values.
 
-        If the sensor values do not correspond to any note, the function returns 127.
+        If the sensor values do not correspond to any note, the function looks for a close key combination. If none is found, it returns 127.
      */
     for (int i = 0; i < NB_NOTES; i++) {
         if (noteArray[i].keyMask == sensorValues) {
             return noteArray[i].midiPitch;
         }
     }
+    for (int i = 0; i < NB_NOTES; i++) {
+        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 1) {
+            return noteArray[i].midiPitch;
+        }
+    }
+    for (int i = 0; i < NB_NOTES; i++) {
+        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 2) {
+            return noteArray[i].midiPitch;
+        }
+    }
     return 127;
+}
+
+int hammingDistance(uint8_t a, uint8_t b) {
+    /*
+        This function calculates the Hamming distance between two numbers.
+
+        The Hamming distance is the number of positions at which the corresponding bits are different.
+
+        Example:
+            The Hamming distance between 0b1010 and 0b1001 is 2.
+     */
+    int distance = 0;
+    uint8_t c = a ^ b;
+    while (c) {
+        distance++;
+        c &= c - 1;
+    }
+    return distance;
 }

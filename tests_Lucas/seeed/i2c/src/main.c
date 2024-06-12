@@ -7,7 +7,7 @@
 int main(void) { 
 
     while (1){
-            int  *val_gpio_1 = is_pressed(); // ou gpio_pin_get(...) si on veut juste une des pins
+            int val_gpio_1 = getKeyMask(); // ou gpio_pin_get(...) si on veut juste une des pins
 
             printk(" %x", val_gpio_1);
 

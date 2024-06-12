@@ -4,7 +4,7 @@
 #include <zephyr/bluetooth/gatt.h>
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/sys/ring_buffer.h>
-#include <ble_midi/ble_midi.h>
+#include "include/ble_midi/ble_midi.h"
 #include <stdio.h>
 
 /************************ App state ************************/
@@ -121,86 +121,6 @@ static const struct bt_data sd[] = {
     BT_DATA_BYTES(BT_DATA_UUID128_ALL, BLE_MIDI_SERVICE_UUID),
 };
 
-/*int main(void)
-{
-        uint32_t err = bt_enable(NULL);
-        __ASSERT(err == 0, "bt_enable failed");
-
-        /* Must be called after bt_enable */
-        /*
-        struct ble_midi_callbacks midi_callbacks = {.available_cb = ble_midi_available_cb,
-                                                    .tx_done_cb = tx_done_cb,
-                                                    .midi_message_cb = ble_midi_message_cb,
-                                                    .sysex_start_cb = ble_midi_sysex_start_cb,
-                                                    .sysex_data_cb = ble_midi_sysex_data_cb,
-                                                    .sysex_end_cb = ble_midi_sysex_end_cb};
-        ble_midi_init(&midi_callbacks);
-
-        int ad_err = bt_le_adv_start(BT_LE_ADV_CONN, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-        printk("bt_le_adv_start %d\n", ad_err);
-
-        while (1)
-        {
-                if (!sample_app_state.sysex_tx_in_progress)
-                {
-                        uint8_t chord_msgs_1[][3] = {
-                            // Note on + pitch + velocity
-                            {0x90, 42, 0x7f},
-                            {0x90, 36, 0x7f},
-                        };
-                        ble_midi_tx_msg(&(chord_msgs_1[0][0]));
-                        ble_midi_tx_msg(&(chord_msgs_1[1][0]));
-                        k_sleep(K_MSEC(500));
-                        uint8_t chord_msgs_2_4[][3] = {
-                            // Note on + pitch + velocity
-                            {0x90, 42, 0x7f},
-                        };
-                        ble_midi_tx_msg(&(chord_msgs_2_4[0][0]));
-                        k_sleep(K_MSEC(500));
-                        uint8_t chord_msgs_3[][3] = {
-                            // Note on + pitch + velocity
-                            {0x90, 42, 0x7f},
-                            {0x90, 38, 0x7f},
-                        };
-                        ble_midi_tx_msg(&(chord_msgs_3[0][0]));
-                        ble_midi_tx_msg(&(chord_msgs_3[1][0]));
-                        k_sleep(K_MSEC(500));
-                        ble_midi_tx_msg(&(chord_msgs_2_4[0][0]));
-                        k_sleep(K_MSEC(500));
-                }
-
-				k_msleep(500);
-
-				if (!sample_app_state.sysex_tx_in_progress)
-                {
-                        uint8_t chord_msgs_1[][3] = {
-                            // Note off + pitch + velocity
-                            {0x80, 42, 0x7f},
-                            {0x80, 36, 0x7f},
-                        };
-                        ble_midi_tx_msg(&(chord_msgs_1[0][0]));
-                        ble_midi_tx_msg(&(chord_msgs_1[1][0]));
-                        k_sleep(K_MSEC(500));
-                        uint8_t chord_msgs_2_4[][3] = {
-                            // Note off + pitch + velocity
-                            {0x80, 42, 0x7f},
-                        };
-                        ble_midi_tx_msg(&(chord_msgs_2_4[0][0]));
-                        k_sleep(K_MSEC(500));
-                        uint8_t chord_msgs_3[][3] = {
-                            // Note off + pitch + velocity
-                            {0x80, 42, 0x7f},
-                            {0x80, 38, 0x7f},
-                        };
-                        ble_midi_tx_msg(&(chord_msgs_3[0][0]));
-                        ble_midi_tx_msg(&(chord_msgs_3[1][0]));
-                        k_sleep(K_MSEC(500));
-                        ble_midi_tx_msg(&(chord_msgs_2_4[0][0]));
-                        k_sleep(K_MSEC(500));
-                }
-				k_msleep(500);
-        }
-}*/
 
 void initialisation(void){
 
@@ -225,7 +145,7 @@ void initialisation(void){
 void joue(bool on_off, int note, int force){
     if (!sample_app_state.sysex_tx_in_progress)
     {
-        uint8_t note[3] = {on_off ? 0x90 : 0x80, note, force}
+        uint8_t note[3] = {on_off ? 0x90 : 0x80, note, force};
         
         ble_midi_tx_msg(&(note[0]));
 

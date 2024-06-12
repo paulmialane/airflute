@@ -24,7 +24,15 @@ struct printk_data_t {
 	int note;
 };
 
-bool is_equal(combi1, combi2){
+void assign_tab(int tab1[8], int tab2[8]){
+	for (int i = 0; i < 8; i++)
+	{
+		tab1[i] = tab2[8];
+	}
+	
+}
+
+bool is_equal(int combi1[8], int combi2[8]){
 	for (int i = 0; i < 8; i++)
 	{
 		if (combi1[i] != combi2[i]){
@@ -50,14 +58,18 @@ void test_buttons(void){
 		k_msleep(500);
 		if(souffle_yes_no()){
 
-			int old_combi[8] = NULL; // On part du principe qu'il n'y a pas d'ancienne combinaison/
-			int combinaison[8] = is_pressed();
+			int old_combi[8] = {}; // On part du principe qu'il n'y a pas d'ancienne combinaison/
+			int combinaison[8] = {};
+			is_pressed(combinaison);
 
-			if (!k_fifo_is_empty(currently_playing)){ //S'il y en a une, on la récupère
 
-				struct printk_data_t *rx_data = k_fifo_peep_head(currently_playing); // attention ! on ne récupère pas les données (ce qui les enlèverait de la file), on regarde juste
+			if (!k_fifo_is_empty(&currently_playing)){ //S'il y en a une, on la récupère
 
-				old_combi = rx_data->buttons;
+				struct printk_data_t *rx_data = k_fifo_peek_head(&currently_playing); // attention ! on ne récupère pas les données (ce qui les enlèverait de la file), on regarde juste
+
+
+				assign_tab(old_combi, rx_data->buttons);
+				
 			}
 
 			if (!is_equal(old_combi, combinaison)){ /*On teste si la combinaison actuelle est différente de la 
@@ -65,20 +77,23 @@ void test_buttons(void){
 			combinaison car on n'était pas en train de jouer*/
 
 				/*arrêter de jouer l'ancienne note*/
+				if (!k_fifo_is_empty(&currently_playing)){ 
+					
+					struct printk_data_t *rx_data = k_fifo_get(&currently_playing, K_FOREVER);
+					size_t size = sizeof(struct printk_data_t);
+					char *mem_ptr = k_malloc(size);
+					__ASSERT_NO_MSG(mem_ptr != 0);
 
-				struct printk_data_t *rx_data = k_fifo_get(currently_playing);
+					memcpy(mem_ptr, &rx_data, size);
 
-				size_t size = sizeof(struct printk_data_t);
-				char *mem_ptr = k_malloc(size);
-				__ASSERT_NO_MSG(mem_ptr != 0);
-
-				memcpy(mem_ptr, &rx_data, size);
-
-				k_fifo_put(&stop_playing, mem_ptr);
+					k_fifo_put(&stop_playing, mem_ptr);
+				}
 
 				/*nouvelle combinaison*/
 
-				struct printk_data_t tx_data = { .buttons = combinaison, .strength = NULL, .note = NULL };
+				struct printk_data_t tx_data = { .buttons = {}, .strength = NULL, .note = NULL };
+
+				assign_tab(tx_data->buttons, combinaison);
 
 				size_t size = sizeof(struct printk_data_t);
 				char *mem_ptr = k_malloc(size);

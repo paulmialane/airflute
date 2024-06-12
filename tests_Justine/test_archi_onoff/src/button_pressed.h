@@ -1,3 +1,3 @@
 #include "button_pressed.c"
 
-int *is_pressed(void);
+void is_pressed(int*);

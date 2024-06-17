@@ -77,3 +77,7 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Lucas : modélisation d'un bec qui peut intégrer le capteur de souffle
 - Lucas : ajout des foncions utilisées pour la détection de souffle et le choix des notes
 - Justine : écriture du programme global intégrant toutes les parties du projet
+
+### Séance du 6/06
+
+- Lucas : 

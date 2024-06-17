@@ -83,6 +83,7 @@ int filtre(int data, int REFERENCE){//pas mal de travail ici
 int souffle_yes_no(void){
    int err;
   // Configure the button pin as input
+   /*
    if(adc_is_ready_dt(&adc_a0))
    printf("ADC is ready\n");
    else
@@ -98,6 +99,7 @@ int souffle_yes_no(void){
       printk("Error in the ADC sequence initialization (%d)\n", err);
       return err;
    }
+   */
 
 
    err = adc_read(adc_a0.dev, &sequence);
@@ -115,6 +117,7 @@ int souffle_force(void){
 
    int err;
   // Configure the button pin as input
+  /*
    if(adc_is_ready_dt(&adc_a0))
    printf("ADC is ready\n");
    else
@@ -130,7 +133,7 @@ int souffle_force(void){
       printk("Error in the ADC sequence initialization (%d)\n", err);
       return err;
    }
-   
+   */
 
 
    err = adc_read(adc_a0.dev, &sequence);

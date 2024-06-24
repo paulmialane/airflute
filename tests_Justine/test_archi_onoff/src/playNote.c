@@ -26,7 +26,7 @@ void playNoteThread(struct k_fifo* noteToPlayFifo, struct k_fifo* currentlyPlayi
 		k_free(rx_data);
 
 
-		if (sample_app_state.ble_midi_is_available){
+		if (isAvailable()){
 			printk("joue une note\n");
 			sendNote(on, note, force);
 

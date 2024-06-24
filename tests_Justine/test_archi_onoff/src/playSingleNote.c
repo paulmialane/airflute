@@ -122,7 +122,11 @@ static const struct bt_data ad[] = {
 static const struct bt_data sd[] = {
     BT_DATA_BYTES(BT_DATA_UUID128_ALL, BLE_MIDI_SERVICE_UUID),
 };
- 
+
+
+int isAvailable(void){
+        return sample_app_state.ble_midi_is_available;
+}
 
 
 void midiInitialize(void){
@@ -148,9 +152,11 @@ void midiInitialize(void){
 void sendNote(bool on_off, int note, int force){
     if (!sample_app_state.sysex_tx_in_progress)
     {
-        uint8_t toPlay[3] = {on_off ? 0x90 : 0x80, note, force};
+        uint8_t toPlay[][3] = {
+                {on_off ? 0x90 : 0x80, note, force}
+                };
         
-        ble_midi_tx_msg(&(toPlay[0]));
+        ble_midi_tx_msg(&(toPlay[0][0]));
 
     }
 }

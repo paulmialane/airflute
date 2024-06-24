@@ -18,14 +18,14 @@ void transformMidiThread(struct k_fifo* buttonsCombinationFifo, struct k_fifo* n
 
 		int combination[8] = {};
 		copyArray(combination, rx_data->buttons);
-		int correspondingNote = midi_note(combination);
+		int correspondingNote = toMidi(combination);
 		int force = rx_data->strength;
 
 		printk("note choisie = %d\n", correspondingNote);
 
 		k_free(rx_data);
 
-		struct note_data tx_data = { .buttons = {} , .strength = force , .note = correspondingNote, .on = 1};
+		struct note_data tx_data = { .buttons = {} , .strength = 127 , .note = correspondingNote, .on = 1};
 
 		copyArray(tx_data.buttons, combination);
 

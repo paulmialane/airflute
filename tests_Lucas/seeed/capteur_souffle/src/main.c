@@ -6,12 +6,14 @@
 #include "capteur_souffle.h"
 
 int main(){
+    int reference = init_capteur();
+    
     int data_out=0;
     while(1){
-        data_out = souffle_force();
+        data_out = souffle_force(reference);
 
         printk("%i\n", data_out);
 
-        k_msleep(100);
+        k_msleep(50);
     }
 }

@@ -27,7 +27,7 @@ struct adc_sequence sequence = {
 
 
 
-int init_capteur(){
+const int init_capteur(){
    
    int err1;
   // Configure the button pin as input
@@ -55,7 +55,9 @@ int init_capteur(){
       moyenne += buf; 
       k_msleep(10);
    }
-   return (int) moyenne/longueur;
+   const int reference = (int) moyenne/longueur;
+   printk("capteur initialisé à %i\n",reference);
+   return reference;
 }
 
 int filtre(int data, int REFERENCE){//pas mal de travail ici
@@ -69,9 +71,6 @@ int filtre(int data, int REFERENCE){//pas mal de travail ici
    return REFERENCE-data;
 }
 
-#define REFERENCE init_capteur()
-//printf("capteur initialisé à %i\n",REFERENCE);
-
 
 
 
@@ -80,31 +79,11 @@ int filtre(int data, int REFERENCE){//pas mal de travail ici
 
 /// fonctions
 
-int souffle_yes_no(void){
+int souffle_yes_no(int reference){
    int err;
-  // Configure the button pin as input
-   /*
-   if(adc_is_ready_dt(&adc_a0))
-   printf("ADC is ready\n");
-   else
-   printf("ADC NOT ready\n");
-
-   err = adc_channel_setup_dt(&adc_a0);
-   if (err < 0) {
-      printk("Error in ADC setup (%d)\n", err);
-      return err;
-   }
-   err = adc_sequence_init_dt(&adc_a0, &sequence);
-   if (err < 0) {
-      printk("Error in the ADC sequence initialization (%d)\n", err);
-      return err;
-   }
-   */
-
-
    err = adc_read(adc_a0.dev, &sequence);
    int data = err;
-   if (data>REFERENCE-sensor_threshold){
+   if (data>reference-sensor_threshold){
       return 0;
    }
    else{
@@ -113,36 +92,15 @@ int souffle_yes_no(void){
 }
 
 
-int souffle_force(void){
-
+int souffle_force(int reference){
    int err;
-  // Configure the button pin as input
-  /*
-   if(adc_is_ready_dt(&adc_a0))
-   printf("ADC is ready\n");
-   else
-   printf("ADC NOT ready\n");
-
-   err = adc_channel_setup_dt(&adc_a0);
-   if (err < 0) {
-      printk("Error in ADC setup (%d)\n", err);
-      return err;
-   }
-   err = adc_sequence_init_dt(&adc_a0, &sequence);
-   if (err < 0) {
-      printk("Error in the ADC sequence initialization (%d)\n", err);
-      return err;
-   }
-   */
-
-
    err = adc_read(adc_a0.dev, &sequence);
-   int data_out=0;
+   int data_out = 0;
    if (err < 0) {
          printk("Error reading the ADC (#%d)", err);
    }
    else {
-         data_out = filtre(buf, REFERENCE);
+         data_out = filtre(buf, reference);
    }
    return data_out;
 }

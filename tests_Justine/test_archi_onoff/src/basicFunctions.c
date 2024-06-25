@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdio.h>
 
-void copyArray(int tab1[8], int tab2[8]){
+void copyArray(int tab1[8], int tab2[8]){ //copies the contents of array tab1 into array tab2 (both size 8)
 	for (int i = 0; i < 8; i++)
 	{
 		tab1[i] = tab2[8];

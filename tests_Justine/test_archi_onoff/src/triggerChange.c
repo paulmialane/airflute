@@ -9,7 +9,6 @@
 #include "blowCaptor.h"
 #include "buttonStatus.h"
 
-
 void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* buttonsCombinationFifo, struct k_fifo* noteToPlayFifo){
 
 	while(1){
@@ -80,7 +79,6 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				memcpy(mem_ptr, &tx_data, size);
 
 				k_fifo_put(buttonsCombinationFifo, mem_ptr);
-
 				printk("Nouvelle combi mise dans la file\n");
 
 			}

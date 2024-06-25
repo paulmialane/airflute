@@ -25,8 +25,7 @@ void playNoteThread(struct k_fifo* noteToPlayFifo, struct k_fifo* currentlyPlayi
 
 		k_free(rx_data);
 
-
-		if (isAvailable()){
+		if (isConnectedOverBLE()){
 			printk("joue une note\n");
 			sendNote(on, note, force);
 			printk("note jouée");

@@ -52,7 +52,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 					struct note_data *rx_data = k_fifo_get(currentlyPlayingFifo, K_FOREVER);
 					rx_data->on = 0;
 					size_t size = sizeof(struct note_data);
-					char *mem_ptr = k_malloc(size);
+					struct note_data *mem_ptr = k_malloc(size);
 					__ASSERT_NO_MSG(mem_ptr != 0);
 
 					memcpy(mem_ptr, rx_data, size);
@@ -68,7 +68,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				copyArray(tx_data.buttons, newCombination);
 
 				size_t size = sizeof(struct note_data);
-				char *mem_ptr = k_malloc(size);
+				struct note_data *mem_ptr = k_malloc(size);
 				__ASSERT_NO_MSG(mem_ptr != 0);
 
 				memcpy(mem_ptr, &tx_data, size);
@@ -94,7 +94,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				/*Ici on enlève directement de la file, car on arrête de jouer de toute manière...*/
 
 				size_t size = sizeof(struct note_data);
-				char *mem_ptr = k_malloc(size);
+				struct note_data *mem_ptr = k_malloc(size);
 				__ASSERT_NO_MSG(mem_ptr != 0);
 
 				memcpy(mem_ptr, rx_data, size);

@@ -30,7 +30,7 @@ void transformMidiThread(struct k_fifo* buttonsCombinationFifo, struct k_fifo* n
 		copyArray(tx_data.buttons, combination);
 
 		size_t size = sizeof(struct note_data);
-		char *mem_ptr = k_malloc(size);
+		struct note_data *mem_ptr = k_malloc(size);
 		__ASSERT_NO_MSG(mem_ptr != 0);
 
 		memcpy(mem_ptr, &tx_data, size);

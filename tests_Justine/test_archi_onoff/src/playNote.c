@@ -37,8 +37,7 @@ void playNoteThread(struct k_fifo* noteToPlayFifo, struct k_fifo* currentlyPlayi
 			printk("array copied into data to transmit\n");
 
 			size_t size = sizeof(struct note_data);
-			char *mem_ptr = k_malloc(size);
-			printk("mem_ptr = %c", *mem_ptr);
+			struct note_data *mem_ptr = k_malloc(size);
 			__ASSERT_NO_MSG(mem_ptr != 0);
 
 			memcpy(mem_ptr, &tx_data, size);

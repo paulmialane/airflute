@@ -134,6 +134,31 @@ uint8_t fromSensorToMidiPitch(uint8_t sensorValues) {
     return 127;
 }
 
+const char * fromSensorToPitchName(uint8_t sensorValues) {
+    /*
+        This function takes the sensor values and returns the MIDI pitch of the note that corresponds to the sensor values.
+
+        If the sensor values do not correspond to any note, the function looks for a close key combination. If none is found, it returns 127.
+     */
+    for (int i = 0; i < NB_NOTES; i++) {
+        if (noteArray[i].keyMask == sensorValues) {
+            return noteArray[i].name;
+        }
+    }
+    /*for (int i = 0; i < NB_NOTES; i++) {
+        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 1) {
+            return noteArray[i].midiPitch;
+        }
+    }
+    for (int i = 0; i < NB_NOTES; i++) {
+        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 2) {
+            return noteArray[i].midiPitch;
+        }
+    }*/
+    return "not a note";
+}
+
+
 int hammingDistance(uint8_t a, uint8_t b) {
     /*
         This function calculates the Hamming distance between two numbers.

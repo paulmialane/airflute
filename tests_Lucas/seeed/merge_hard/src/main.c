@@ -15,8 +15,9 @@ int main(){
 
         int sensorValues = getKeyMask(); 
 
-        printk("\r");
-        
+        //clear terminal
+        printk("\033[2J\033[H"); 
+
         for (int i=0; i<8; i++){
                 printk("%d", (sensorValues>>i&1));
         }
@@ -25,12 +26,8 @@ int main(){
 
         printk("     %i   ", data_out);
 
-        uint8_t midiPitch = fromSensorToMidiPitch(sensorValues);
-        if (midiPitch != 127) {
-        printf("  The MIDI pitch of the note is: %d                   ", midiPitch);
-        } else {
-        printf("  The sensor values do not correspond to any note    ");
-        }
+        printf("  The MIDI pitch of the note is %s (%d) ",
+             fromSensorToPitchName(sensorValues) ,fromSensorToMidiPitch(sensorValues));
 
         k_msleep(50);
     }

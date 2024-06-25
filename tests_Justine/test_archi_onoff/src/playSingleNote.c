@@ -124,7 +124,7 @@ static const struct bt_data sd[] = {
 };
 
 
-int isAvailable(void){
+int isConnectedOverBLE(void){
         return sample_app_state.ble_midi_is_available;
 }
 
@@ -158,7 +158,7 @@ void sendNote(bool on_off, int note, int force){
                 };
         printk("going to play note number %d with on = %d\n", note, on_off);
         ble_midi_tx_msg(&(toPlay[0][0]));
-        printk("played my note\n")
+        printk("played my note\n");
         k_msleep(50);
     }
 }

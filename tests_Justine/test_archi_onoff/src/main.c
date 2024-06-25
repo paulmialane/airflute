@@ -37,6 +37,6 @@ void playNoteThreadInit(){
 
 
 K_THREAD_DEFINE(blinkId, STACKSIZE, blink, NULL, NULL, NULL, PRIORITY, 0, 0);
-K_THREAD_DEFINE(triggerChangeId, STACKSIZE, triggerChangeThreadInit, NULL, NULL, NULL, PRIORITY, 0, 30000);
-K_THREAD_DEFINE(transformMidiId, STACKSIZE, transformMidiThreadInit, NULL, NULL, NULL, PRIORITY, 0, 30000);
+K_THREAD_DEFINE(triggerChangeId, STACKSIZE, triggerChangeThreadInit, NULL, NULL, NULL, PRIORITY, 0, 5000);
+K_THREAD_DEFINE(transformMidiId, STACKSIZE, transformMidiThreadInit, NULL, NULL, NULL, PRIORITY, 0, 5000);
 K_THREAD_DEFINE(playNoteId, STACKSIZE, playNoteThreadInit, NULL, NULL, NULL, PRIORITY, 0, 0);

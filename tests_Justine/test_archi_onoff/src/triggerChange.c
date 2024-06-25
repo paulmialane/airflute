@@ -14,6 +14,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 
 	while(1){
 		k_msleep(500);
+		printk("still alive");
 		int isBlowing = 0;
 		isBlowing = blowingOnOff();
 		printk("Est-ce qu'on souffle : %d\n", isBlowing);
@@ -51,14 +52,14 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 					char *mem_ptr = k_malloc(size);
 					__ASSERT_NO_MSG(mem_ptr != 0);
 
-					memcpy(mem_ptr, &rx_data, size);
+					memcpy(mem_ptr, rx_data, size);
 
 					k_fifo_put(noteToPlayFifo, mem_ptr);
 				}
 
 				/*nouvelle combinaison*/
 
-				struct note_data tx_data = { .buttons = {}, .strength = 0, .note = 0, .on = 1};
+				struct note_data tx_data = { .buttons = {}, .strength = 127, .note = 0, .on = 1};
 
 				copyArray(tx_data.buttons, newCombination);
 
@@ -92,7 +93,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				char *mem_ptr = k_malloc(size);
 				__ASSERT_NO_MSG(mem_ptr != 0);
 
-				memcpy(mem_ptr, &rx_data, size);
+				memcpy(mem_ptr, rx_data, size);
 
 				k_fifo_put(noteToPlayFifo, mem_ptr);
 

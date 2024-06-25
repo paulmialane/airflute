@@ -29,16 +29,22 @@ void playNoteThread(struct k_fifo* noteToPlayFifo, struct k_fifo* currentlyPlayi
 		if (isAvailable()){
 			printk("joue une note\n");
 			sendNote(on, note, force);
+			printk("note jouée");
 
 			struct note_data tx_data = {.buttons = {}, .strength = force , .note = note, .on = 1};
 
 			copyArray(tx_data.buttons, combi);
+			
+			printk("array copied into data to transmit\n");
 
 			size_t size = sizeof(struct note_data);
 			char *mem_ptr = k_malloc(size);
+			printk("mem_ptr = %c", *mem_ptr);
 			__ASSERT_NO_MSG(mem_ptr != 0);
 
 			memcpy(mem_ptr, &tx_data, size);
+
+			printk("copied data from tx_data into mem_ptr");
 
 			k_fifo_put(currentlyPlayingFifo, mem_ptr);
 

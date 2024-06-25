@@ -152,11 +152,13 @@ void midiInitialize(void){
 void sendNote(bool on_off, int note, int force){
     if (!sample_app_state.sysex_tx_in_progress)
     {
+        printk("creating note to play\n");
         uint8_t toPlay[][3] = {
                 {on_off ? 0x90 : 0x80, note, force}
                 };
-        
+        printk("going to play note number %d with on = %d\n", note, on_off);
         ble_midi_tx_msg(&(toPlay[0][0]));
+        printk("played my note\n")
         k_msleep(50);
     }
 }

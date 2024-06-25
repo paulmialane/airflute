@@ -94,7 +94,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				/*Ici on enlève directement de la file, car on arrête de jouer de toute manière...*/
 
 				size_t size = sizeof(struct note_data);
-				struct note_data *mem_ptr = k_malloc(size);
+				char *mem_ptr = k_malloc(size);
 				__ASSERT_NO_MSG(mem_ptr != 0);
 
 				memcpy(mem_ptr, rx_data, size);

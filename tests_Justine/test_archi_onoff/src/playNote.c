@@ -45,9 +45,11 @@ void playNoteThread(struct k_fifo* noteToPlayFifo, struct k_fifo* currentlyPlayi
 
 			printk("copied data from tx_data into mem_ptr");
 
-			k_fifo_put(currentlyPlayingFifo, mem_ptr);
+			if (on){
+				k_fifo_put(currentlyPlayingFifo, mem_ptr);
+				printk("on a indiqué dans la file qu'on était en train de jouer\n");
+			}
 
-			printk("on a indiqué dans la file qu'on était en train de jouer\n");
 		}
 		
 		else{

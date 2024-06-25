@@ -36,9 +36,13 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				printk("ancienne combinaison récupérée\n");
 			}
 
-			if (!isEqual(oldCombination, newCombination)){ /*On teste si la combinaison actuelle est différente de la 
-			dernière (et donc s'il faut changer de note), cela marche aussi s'il n'y a pas de dernière 
-			combinaison car on n'était pas en train de jouer*/
+			if (!isEqual(oldCombination, newCombination)){ 
+			
+			/*
+				On teste si la combinaison actuelle est différente de la 
+				dernière (et donc s'il faut changer de note), cela marche aussi s'il n'y a pas de dernière 
+				combinaison car on n'était pas en train de jouer
+			*/
 
 			    printk("on a changé de note\n");
 
@@ -46,7 +50,6 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				if (!k_fifo_is_empty(currentlyPlayingFifo)){ 
 					
 					struct note_data *rx_data = k_fifo_get(currentlyPlayingFifo, K_FOREVER);
-
 					rx_data->on = 0;
 					size_t size = sizeof(struct note_data);
 					char *mem_ptr = k_malloc(size);
@@ -55,6 +58,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 					memcpy(mem_ptr, rx_data, size);
 
 					k_fifo_put(noteToPlayFifo, mem_ptr);
+					k_free(rx_data);
 				}
 
 				/*nouvelle combinaison*/
@@ -96,7 +100,7 @@ void triggerChangeThread(struct k_fifo* currentlyPlayingFifo, struct k_fifo* but
 				memcpy(mem_ptr, rx_data, size);
 
 				k_fifo_put(noteToPlayFifo, mem_ptr);
-
+				k_free(rx_data);
 				printk("on a demandé d'arrêter de jouer l'ancienne note\n");
 			}
 		}

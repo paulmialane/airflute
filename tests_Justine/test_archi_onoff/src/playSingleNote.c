@@ -157,6 +157,6 @@ void sendNote(bool on_off, int note, int force){
                 };
         
         ble_midi_tx_msg(&(toPlay[0][0]));
-
+        k_sleep(50);
     }
 }

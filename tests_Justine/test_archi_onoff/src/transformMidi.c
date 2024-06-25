@@ -25,7 +25,7 @@ void transformMidiThread(struct k_fifo* buttonsCombinationFifo, struct k_fifo* n
 
 		k_free(rx_data);
 
-		struct note_data tx_data = { .buttons = {} , .strength = 127 , .note = correspondingNote, .on = 1};
+		struct note_data tx_data = { .buttons = {} , .strength = force, .note = correspondingNote, .on = 1};
 
 		copyArray(tx_data.buttons, combination);
 

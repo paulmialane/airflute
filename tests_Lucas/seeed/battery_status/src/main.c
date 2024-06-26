@@ -39,7 +39,7 @@ int main(void){
 	}
 
 	int err;
-  // Configure the button pin as input
+    // Configure the button pin as input
 	if(adc_is_ready_dt(&adc_a7))
     printf("ADC is ready\n");
 	else
@@ -67,8 +67,7 @@ int main(void){
 
 		err = adc_read(adc_a7.dev, &sequence);
 		if (err < 0) {
-		printk("Error reading the ADC (#%d)", err);
-		continue;
+		printk("Error reading the ADC (#%d) \n", err);
 		} 
 
 		else {

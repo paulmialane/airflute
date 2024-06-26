@@ -9,7 +9,7 @@
 
 static const struct adc_dt_spec adc_a0 =  ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 0);
 
-int sensor_threshold = 50;
+int sensor_threshold = 25;
 
 // une seule donnée de 16bits
 int16_t buf = 33;

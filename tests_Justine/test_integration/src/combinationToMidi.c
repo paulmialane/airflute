@@ -108,9 +108,6 @@ const note_t noteArray[NB_NOTES] = {
 };
 
 
-uint8_t combinationToMidi(uint8_t sensorValues);
-int hammingDistance(uint8_t a, uint8_t b);
-
 uint8_t combinationToMidi(uint8_t sensorValues) {
     /*
         This function takes the sensor values and returns the MIDI pitch of the note that corresponds to the sensor values.

@@ -40,7 +40,6 @@ static void midi_msg_work_cb(struct k_work *w)
         {
                 uint8_t msg_byte_count = data[0];
                 uint8_t *msg_bytes = &data[1];
-                printk("incoming MIDI message ");
                 for (int i = 0; i < msg_byte_count; i++)
                 {
                         printk("%02x ", msg_bytes[i]);
@@ -153,10 +152,8 @@ void midiInitialize(void){
 void sendNote(bool on_off, int note, int force){
     if (!sample_app_state.sysex_tx_in_progress)
     {
-        printk("creating note to play\n");
         uint8_t toPlay[3] = {on_off ? 0x90 : 0x80, note, force};
-        printk("going to play note number %d with on = %d\n", note, on_off);
+        // printk("going to play note number %d with on = %d\n", note, on_off);
         ble_midi_tx_msg(toPlay);
-        printk("played my note\n");
     }
 }

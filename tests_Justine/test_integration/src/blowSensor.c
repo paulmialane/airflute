@@ -22,13 +22,6 @@ struct adc_sequence sequence = {
 	};
 
 
-
-
-
-
-
-
-
 int sensorInit(void){
    
    int err1;

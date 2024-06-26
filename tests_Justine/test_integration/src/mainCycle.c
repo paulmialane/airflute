@@ -14,7 +14,8 @@
 
 void mainCycleThread(){
 
-	int reference = init_capteur();
+	int reference;
+	reference = sensorInit();
 
 	midiInitialize();
 	printk("------------------\nMidi initialisé\n------------------\n\n");
@@ -26,19 +27,16 @@ void mainCycleThread(){
 	*/
 
 	while(1){
-		k_msleep(500);
+		k_msleep(50);
 		// We check if we are blowing
 		int isBlowing;
 		isBlowing = blowingOnOff(reference);
-		printk("Est-ce qu'on souffle : %d\n", isBlowing);
 
 		if(isBlowing){
 			// If we are blowing, we get the old combination of buttons, then the new
 			int oldCombination = currentlyPlaying.buttons; 
-			int newCombination;
+			uint8_t newCombination;
 			newCombination = getCombination();
-
-			printk("Capteurs doigts récupérés\n");
 
 
 			if (oldCombination != newCombination){ 
@@ -47,8 +45,6 @@ void mainCycleThread(){
 				If the combination changed since the last note played 
 				(takes into account the case where we were not playing beforehand)
 				*/
-
-			    printk("On a changé de note\n");
 
 				/*We need to stop playing the current note if we are playing one*/
 
@@ -62,8 +58,8 @@ void mainCycleThread(){
 
 				// Now that we stopped playing the note, we can play the new one
 
-				int newNote;
-				newNote = toMidi(newCombination);
+				uint8_t newNote;
+				newNote = combinationToMidi(newCombination);
 
 				currentlyPlaying.buttons = newCombination;
 				currentlyPlaying.note = newNote;

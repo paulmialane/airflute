@@ -11,25 +11,25 @@
 #define STACKSIZE 1024
 #define PRIORITY 4
 
-void mainCycleInit(){
+
+
+void main(void){
     midiInitialize();
 
     while(1){
         k_msleep(1000);
-        sendNote(1, 60, 1);
-        k_msleep(1000);
-        changeNote(127);
-        k_msleep(1000);
-        changeNote(5);
-        k_msleep(1000);
-        sendNote(0, 60, 0);
+        sendNote(true, 60, 50);
+        k_msleep(500);
+        printk("sent note");
+        for (int i = 0; i < 25; i++)
+        {
+            k_msleep(100);
+            changeVolume(100+i);
+        }
+        k_msleep(500);
+        sendNote(false, 60, 0);
+        printk("stopped sending note");
     }
     
 }
  
-
-
-// A thread to blink the led as it is usefull to know if the board is still alive
-K_THREAD_DEFINE(blinkId, STACKSIZE, blink, NULL, NULL, NULL, PRIORITY, 0, 0);
-
-K_THREAD_DEFINE(mainId, STACKSIZE, mainCycleInit, NULL, NULL, NULL, PRIORITY, 0, 0);

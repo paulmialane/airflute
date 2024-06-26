@@ -159,11 +159,10 @@ void sendNote(bool on_off, int note, int force){
 
 
 
-void changeNote(int force){
+void changeVolume(int force){
         if (!sample_app_state.sysex_tx_in_progress)
          {
-                uint8_t toPlay[3] = {176, 2, force};
-                printk("changing note force : %d\n", force);
+                uint8_t toPlay[3] = {0xb0, 11, force};
                 ble_midi_tx_msg(toPlay);
         }
 }

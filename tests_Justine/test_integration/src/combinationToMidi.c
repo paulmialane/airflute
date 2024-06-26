@@ -6,7 +6,7 @@
 
 
 #define NB_BUTTONS 8
-#define NB_NOTES 24
+#define NB_NOTES 27
 // Whether we want to add or subtract an octave to the note (1/0/-1)
 #define OCTAVE 0
 
@@ -23,6 +23,7 @@ const uint8_t CSharp = 0;
 const uint8_t C = (1<<1);
 const uint8_t B = 1;
 const uint8_t Bb = 1 | (1<<3);
+const uint8_t ASharp = 1 | (1<<1) | (1<<3);
 const uint8_t A = 1 | (1<<1);
 const uint8_t GSharp = 1 | (1<<1) | (1<<2) | (1<<3);
 const uint8_t G = 1 | (1<<1) | (1<<2);
@@ -35,6 +36,7 @@ const uint8_t CSharpPlus = CSharp | (1<<7);
 const uint8_t CPlus = C | (1<<7);
 const uint8_t BPlus = B | (1<<7);
 const uint8_t BbPlus = Bb | (1<<7);
+const uint8_t ASharpPlus = ASharp | (1<<7);
 const uint8_t APlus = A | (1<<7);
 const uint8_t GSharpPlus = GSharp | (1<<7);
 const uint8_t GPlus = G | (1<<7);
@@ -43,6 +45,7 @@ const uint8_t FPlus = F | (1<<7);
 const uint8_t EPlus = E | (1<<7);
 const uint8_t DSharpPlus = DSharp | (1<<7);
 const uint8_t DPlus = D | (1<<7);
+const uint8_t DPlusPlus = (1<<1) | (1<<2) | (1<<7);
 
 /* A structure to hold the note information
 
@@ -86,6 +89,7 @@ const note_t noteArray[NB_NOTES] = {
     NOTE_INIT(C, 72+OCTAVE*12, "C"),
     NOTE_INIT(B, 71+OCTAVE*12, "B"),
     NOTE_INIT(Bb, 70+OCTAVE*12, "Bb"),
+    NOTE_INIT(ASharp, 70+OCTAVE*12, "A#"),
     NOTE_INIT(A, 69+OCTAVE*12, "A"),
     NOTE_INIT(GSharp, 68+OCTAVE*12, "G#"),
     NOTE_INIT(G, 67+OCTAVE*12, "G"),
@@ -98,6 +102,7 @@ const note_t noteArray[NB_NOTES] = {
     NOTE_INIT(CPlus, 84+OCTAVE*12, "+C"),
     NOTE_INIT(BPlus, 83+OCTAVE*12, "+B"),
     NOTE_INIT(BbPlus, 82+OCTAVE*12, "+Bb"),
+    NOTE_INIT(ASharpPlus, 82+OCTAVE*12, "+A#"),
     NOTE_INIT(APlus, 81+OCTAVE*12, "+A"),
     NOTE_INIT(GSharpPlus, 80+OCTAVE*12, "+G#"),
     NOTE_INIT(GPlus, 79+OCTAVE*12, "+G"),
@@ -105,7 +110,8 @@ const note_t noteArray[NB_NOTES] = {
     NOTE_INIT(FPlus, 77+OCTAVE*12, "+F"),
     NOTE_INIT(EPlus, 76+OCTAVE*12, "+E"),
     NOTE_INIT(DSharpPlus, 75+OCTAVE*12, "+D#"),
-    NOTE_INIT(DPlus, 74+OCTAVE*12, "+D")
+    NOTE_INIT(DPlus, 74+OCTAVE*12, "+D"),
+    NOTE_INIT(DPlusPlus, 86+OCTAVE*12, "++D")
 };
 
 

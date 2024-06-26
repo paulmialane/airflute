@@ -8,7 +8,6 @@
 #include <zephyr/sys/ring_buffer.h>
 #include "include/ble_midi/ble_midi.h"
 #include <stdio.h>
-#include "dataType.h"
 
 /************************ App state ************************/
 K_MSGQ_DEFINE(button_event_q, sizeof(uint8_t), 128, 4);

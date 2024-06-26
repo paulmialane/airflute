@@ -13,15 +13,18 @@
 
 void mainCycleInit(){
     midiInitialize();
-    sendNote(1, 60, 50);
-    k_msleep(1000);
-    changeNote(60);
-    k_msleep(1000);
-    changeNote(127);
-    k_msleep(1000);
-    changeNote(5);
-    k_msleep(1000);
-    sendNote(0, 60, 0);
+
+    while(1){
+        k_msleep(1000);
+        sendNote(1, 60, 1);
+        k_msleep(1000);
+        changeNote(127);
+        k_msleep(1000);
+        changeNote(5);
+        k_msleep(1000);
+        sendNote(0, 60, 0);
+    }
+    
 }
  
 

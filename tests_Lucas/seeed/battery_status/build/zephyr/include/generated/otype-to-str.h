@@ -42,7 +42,6 @@ case K_OBJ_SENSOR_DECODER_API: ret = "sensor_decoder_api"; break;
 /* Driver subsystems */
 case K_OBJ_DRIVER_ADC: ret = "adc driver"; break;
 case K_OBJ_DRIVER_GPIO: ret = "gpio driver"; break;
-case K_OBJ_DRIVER_I2C: ret = "i2c driver"; break;
 case K_OBJ_DRIVER_UART: ret = "uart driver"; break;
 case K_OBJ_DRIVER_CRYPTO: ret = "crypto driver"; break;
 case K_OBJ_DRIVER_AUXDISPLAY: ret = "auxdisplay driver"; break;
@@ -68,6 +67,7 @@ case K_OBJ_DRIVER_FPGA: ret = "fpga driver"; break;
 case K_OBJ_DRIVER_FUEL_GAUGE: ret = "fuel_gauge driver"; break;
 case K_OBJ_DRIVER_GNSS: ret = "gnss driver"; break;
 case K_OBJ_DRIVER_HWSPINLOCK: ret = "hwspinlock driver"; break;
+case K_OBJ_DRIVER_I2C: ret = "i2c driver"; break;
 case K_OBJ_DRIVER_I2S: ret = "i2s driver"; break;
 case K_OBJ_DRIVER_I3C: ret = "i3c driver"; break;
 case K_OBJ_DRIVER_IPM: ret = "ipm driver"; break;

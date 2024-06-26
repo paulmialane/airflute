@@ -186,9 +186,6 @@
 /Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/hwinfo/CMakeFiles/drivers__hwinfo.dir
 /Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/hwinfo/CMakeFiles/edit_cache.dir
 /Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/hwinfo/CMakeFiles/rebuild_cache.dir
-/Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/i2c/CMakeFiles/drivers__i2c.dir
-/Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/i2c/CMakeFiles/edit_cache.dir
-/Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/i2c/CMakeFiles/rebuild_cache.dir
 /Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir
 /Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/pinctrl/CMakeFiles/edit_cache.dir
 /Users/lucasmichel/Desktop/Télécom_Paris/cours/Artishow/airflute/tests_Lucas/seeed/battery_status/build/zephyr/drivers/pinctrl/CMakeFiles/rebuild_cache.dir

@@ -9,7 +9,9 @@
 #define SLEEP_TIME_MS   1000
 
 /* The devicetree node identifier for the "led0" alias. */
-#define TRIG_BAT DT_ALIAS(sw0)
+#define SW0 DT_ALIAS(sw0)
+const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(SW0, gpios);
+
 
 static const struct adc_dt_spec adc_a7 = ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 0);
 
@@ -23,16 +25,15 @@ struct adc_sequence sequence = {
 		//.calibrate = true,
 	};
 
-int main(void)
-{
-	int ret;
-	bool led_state = true;
+int main(void){
 
-	if (!gpio_is_ready_dt(&TRIG_BAT)) {
+	int ret;
+
+	if (!gpio_is_ready_dt(&button)) {
 		return 0;
 	}
 
-	ret = gpio_pin_configure_dt(&TRIG_BAT, GPIO_OUTPUT_ACTIVE);
+	ret = gpio_pin_configure_dt(&button, GPIO_OUTPUT_ACTIVE);
 	if (ret < 0) {
 		return 0;
 	}
@@ -59,7 +60,7 @@ int main(void)
 
 	while (1) {
 
-		ret = gpio_pin_set_dt(&TRIG_BAT,1);
+		ret = gpio_pin_set_dt(&button,1);
 		if (ret < 0) {
 			return 0;
 		}

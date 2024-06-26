@@ -77,12 +77,18 @@ int filtre(int data, int REFERENCE){//pas mal de travail ici
 int blowingOnOff(int reference){
    int err;
    err = adc_read(adc_a0.dev, &sequence);
-   int data = err;
-   if (data>reference-sensor_threshold){
-      return 0;
+   int data_out = 0;
+   if (err < 0) {
+         printk("Error reading the ADC (#%d)", err);
    }
-   else{
-      return 1;
+   else {
+      data_out = filtre(buf, reference);
+      if (data_out){
+         return 1;
+      }
+      else{
+         return 0;
+      }
    }
 }
 

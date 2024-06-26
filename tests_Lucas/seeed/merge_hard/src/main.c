@@ -22,7 +22,7 @@ int main(){
                 printk("%d", (sensorValues>>i&1));
         }
 
-        data_out = souffle_force(reference);
+        data_out = souffle_yes_no(reference);
 
         printk("     %i   ", data_out);
 

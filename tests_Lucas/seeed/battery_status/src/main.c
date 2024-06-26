@@ -40,21 +40,21 @@ int main(void){
 
 	int err;
   // Configure the button pin as input
-  if(adc_is_ready_dt(&adc_a7))
+	if(adc_is_ready_dt(&adc_a7))
     printf("ADC is ready\n");
-  else
+	else
     printf("ADC NOT ready\n");
 
-   err = adc_channel_setup_dt(&adc_a7);
-   if (err < 0) {
-      printk("Error in ADC setup (%d)\n", err);
-      return err;
-   }
-   err = adc_sequence_init_dt(&adc_a7, &sequence);
-   if (err < 0) {
-      printk("Error in the ADC sequence initialization (%d)\n", err);
-      return err;
-   }
+	err = adc_channel_setup_dt(&adc_a7);
+	if (err < 0) {
+    	printk("Error in ADC setup (%d)\n", err);
+    	return err;
+	}
+	err = adc_sequence_init_dt(&adc_a7, &sequence);
+	if (err < 0) {
+		printk("Error in the ADC sequence initialization (%d)\n", err);
+		return err;
+	}
 	int data_out;
 
 
@@ -66,14 +66,19 @@ int main(void){
 		}
 
 		err = adc_read(adc_a7.dev, &sequence);
-      if (err < 0) {
-         printk("Error reading the ADC (#%d)", err);
-         continue;
-      } else {
-         data_out = buf;
-         printk("%i\n", data_out);
-      }
+		if (err < 0) {
+		printk("Error reading the ADC (#%d)", err);
+		continue;
+		} 
+
+		else {
+		data_out = buf;
+		printk("%i\n", data_out);
+		}
+
 		k_msleep(SLEEP_TIME_MS);
 	}
+
+
 	return 0;
 }

@@ -7,7 +7,8 @@
 
 #define NB_BUTTONS 8
 #define NB_NOTES 24
-
+// Whether we want to add or subtract an octave to the note (1/0/-1)
+#define OCTAVE 0
 
 /* Key combination definition.
 
@@ -81,30 +82,30 @@ typedef struct {
 #define NOTE_INIT(k, m, n) {.keyMask=k, .midiPitch=(m&0xff), .name=n}
 
 const note_t noteArray[NB_NOTES] = {
-    NOTE_INIT(CSharp, 73, "C#"),
-    NOTE_INIT(C, 72, "C"),
-    NOTE_INIT(B, 71, "B"),
-    NOTE_INIT(Bb, 70, "Bb"),
-    NOTE_INIT(A, 69, "A"),
-    NOTE_INIT(GSharp, 68, "G#"),
-    NOTE_INIT(G, 67, "G"),
-    NOTE_INIT(FSharp, 66, "F#"),
-    NOTE_INIT(F, 65, "F"),
-    NOTE_INIT(E, 64, "E"),
-    NOTE_INIT(DSharp, 63, "D#"),
-    NOTE_INIT(D, 62, "D"),
-    NOTE_INIT(CSharpPlus, 85, "+C#"),
-    NOTE_INIT(CPlus, 84, "+C"),
-    NOTE_INIT(BPlus, 83, "+B"),
-    NOTE_INIT(BbPlus, 82, "+Bb"),
-    NOTE_INIT(APlus, 81, "+A"),
-    NOTE_INIT(GSharpPlus, 80, "+G#"),
-    NOTE_INIT(GPlus, 79, "+G"),
-    NOTE_INIT(FSharpPlus, 78, "+F#"),
-    NOTE_INIT(FPlus, 77, "+F"),
-    NOTE_INIT(EPlus, 76, "+E"),
-    NOTE_INIT(DSharpPlus, 75, "+D#"),
-    NOTE_INIT(DPlus, 74, "+D")
+    NOTE_INIT(CSharp, 73+OCTAVE*12, "C#"),
+    NOTE_INIT(C, 72+OCTAVE*12, "C"),
+    NOTE_INIT(B, 71+OCTAVE*12, "B"),
+    NOTE_INIT(Bb, 70+OCTAVE*12, "Bb"),
+    NOTE_INIT(A, 69+OCTAVE*12, "A"),
+    NOTE_INIT(GSharp, 68+OCTAVE*12, "G#"),
+    NOTE_INIT(G, 67+OCTAVE*12, "G"),
+    NOTE_INIT(FSharp, 66+OCTAVE*12, "F#"),
+    NOTE_INIT(F, 65+OCTAVE*12, "F"),
+    NOTE_INIT(E, 64+OCTAVE*12, "E"),
+    NOTE_INIT(DSharp, 63+OCTAVE*12, "D#"),
+    NOTE_INIT(D, 62+OCTAVE*12, "D"),
+    NOTE_INIT(CSharpPlus, 85+OCTAVE*12, "+C#"),
+    NOTE_INIT(CPlus, 84+OCTAVE*12, "+C"),
+    NOTE_INIT(BPlus, 83+OCTAVE*12, "+B"),
+    NOTE_INIT(BbPlus, 82+OCTAVE*12, "+Bb"),
+    NOTE_INIT(APlus, 81+OCTAVE*12, "+A"),
+    NOTE_INIT(GSharpPlus, 80+OCTAVE*12, "+G#"),
+    NOTE_INIT(GPlus, 79+OCTAVE*12, "+G"),
+    NOTE_INIT(FSharpPlus, 78+OCTAVE*12, "+F#"),
+    NOTE_INIT(FPlus, 77+OCTAVE*12, "+F"),
+    NOTE_INIT(EPlus, 76+OCTAVE*12, "+E"),
+    NOTE_INIT(DSharpPlus, 75+OCTAVE*12, "+D#"),
+    NOTE_INIT(DPlus, 74+OCTAVE*12, "+D")
 };
 
 

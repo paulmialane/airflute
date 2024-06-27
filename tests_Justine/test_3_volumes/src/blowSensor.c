@@ -107,16 +107,7 @@ int blowingStrength(int reference){
 }
 
 int strengthCategory(int strength){
-   if (strength<60){
-      return 50;
-   }
-
-   else{
-      if (strength<100){
-         return 90;
-      }
-      else{
-         return 120;
-      }
-   }
+   int category;
+   category = (strength/10)*10 + 5;
+   return category;
 }

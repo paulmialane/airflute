@@ -33,7 +33,8 @@ void mainCycleThread(){
 		isBlowing = blowingOnOff(reference);
 
 		if(isBlowing){
-			// If we are blowing, we get the old combination of buttons, then the new
+			/*If we are blowing, we get the old combination of buttons, then the new
+			and the old strength, then the new*/
 			int oldCombination = currentlyPlaying.buttons; 
 			uint8_t newCombination;
 			newCombination = getCombination();
@@ -86,6 +87,8 @@ void mainCycleThread(){
 					/*for now, we are trying to just send the same note with a different volume
 					(without sending a note off first)*/
 					currentlyPlaying.strength = newStrength;
+
+					sendNote(false, currentlyPlaying.note, currentlyPlaying.strength);
 
 					sendNote(true, currentlyPlaying.note, currentlyPlaying.strength);
 				}

@@ -81,3 +81,21 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 ### Séance du 6/06
 
 - Lucas : 
+- Justine : écriture du programme global intégrant toutes les parties du projet
+
+#Séance du 13/06
+
+- Justine : écriture du programme global intégrant toutes les parties du projet
+
+# 24/06
+
+- Justine et Paul : réorganisation du programme intégrant toutes les parties du projet
+
+# 25/06 
+
+- Justine et Paul : tests supplémentaires sur le programme intégrant toutes les parties du projet, abandon des threads
+
+# 26/06
+
+- Justine et Paul : programme fonctionnel en soufflant en On/Off, réglages supplémentaires des différentes notes
+- Justine : tentative de réglage du volume au fur et à mesure avec des envois MIDI (Control Change)

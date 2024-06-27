@@ -82,7 +82,7 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 - Justine : écriture du programme global intégrant toutes les parties du projet
 - Paul : Ajout de la possibilité de se connecter en bluetooth via l'interface graphique.
 
-### Séance du 6/06
+### Séance du 5/06
 
 - Lucas : 
 - Justine : écriture du programme global intégrant toutes les parties du projet
@@ -96,10 +96,12 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 ### Séance du 24/06
 
 - Justine et Paul : Organisation du programme intégrant toutes les parties du projet.
+- Lucas : début du travail sur la charge de la batterie et fabrication du PCB.
 
 ### 25/06 
 
 - Justine et Paul : tests supplémentaires sur le programme intégrant toutes les parties du projet, abandon des threads.
+- Lucas : finition du PCB suite du travail sur la charge de la batterie et fusion des différents programmes des capteurs.
 
 ### Séance du 26/06
 
@@ -107,3 +109,5 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 
 - Justine : tentative de réglage du volume au fur et à mesure avec des envois MIDI (Control Change)
 - Paul : Ajout d'une option pour ajouter/supprimer des octaves. Recherche d'une banques de son pour la flute pour notre synthétiseur. 
+
+- Lucas : intégration du programme qui permet de jouer des notes (premiers morceaux joués).

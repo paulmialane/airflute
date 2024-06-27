@@ -56,11 +56,13 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 
 - Justine : Code pour me familiariser avec les threads + les FIFOs pour communiquer entre les threads
 - Lucas : Code pour la lecture en I2C fonctionnel
+- Paul: Cherche a faire fonctionner le projet zephyr-ble-midi afin de pouvoir se connecter avec un PC/Téléphone.
 
 ### Séance du 02/05
 
 - Lucas : Gestion des valeur obtenues en I2C et commencement de la lecture analogique (capteur de souffle)
-- Justine : jouer un accord en MIDI Bluetooth sur téléphone avec applications adaptées
+- Justine et Paul : jouer un accord en MIDI Bluetooth sur téléphone avec applications adaptées
+- Paul: Tentative de connexion sur PC infructueuse.
 
 ### Séance du 07/05
 
@@ -71,31 +73,37 @@ Pour la prochaine séance, nous souhaiterions avoir commencé à regarder les di
 
 - Lucas : calibration du capteur de souffle et filtrage des données
 - Justine : écriture du programme global intégrant toutes les parties du projet
+- Paul: A l'aide des encadrants, parvient à connecter la carte à ordinateur via le terminal. Commence a regarder les synthétiseurs sur Linux afin de jouer des notes. 
 
 ### Séance du 22/05
 
 - Lucas : modélisation d'un bec qui peut intégrer le capteur de souffle
 - Lucas : ajout des foncions utilisées pour la détection de souffle et le choix des notes
 - Justine : écriture du programme global intégrant toutes les parties du projet
+- Paul : Ajout de la possibilité de se connecter en bluetooth via l'interface graphique.
 
 ### Séance du 6/06
 
 - Lucas : 
 - Justine : écriture du programme global intégrant toutes les parties du projet
+- Paul : Ecriture du code pour faire correspondre une note a une combinaison de capteurs.
 
-#Séance du 13/06
+### Séance du 13/06
 
 - Justine : écriture du programme global intégrant toutes les parties du projet
+- Paul : A l'aide des encadrants, amélioration du programme pour faire correspondre des notes et des combinaisons de capteurs. Ajout d'un code pour corriger une fausse note.
 
-# 24/06
+### Séance du 24/06
 
-- Justine et Paul : réorganisation du programme intégrant toutes les parties du projet
+- Justine et Paul : Organisation du programme intégrant toutes les parties du projet.
 
-# 25/06 
+### 25/06 
 
-- Justine et Paul : tests supplémentaires sur le programme intégrant toutes les parties du projet, abandon des threads
+- Justine et Paul : tests supplémentaires sur le programme intégrant toutes les parties du projet, abandon des threads.
 
-# 26/06
+### Séance du 26/06
 
-- Justine et Paul : programme fonctionnel en soufflant en On/Off, réglages supplémentaires des différentes notes
+- Justine et Paul : programme fonctionnel en soufflant en On/Off, réglages supplémentaires des différentes notes.
+
 - Justine : tentative de réglage du volume au fur et à mesure avec des envois MIDI (Control Change)
+- Paul : Ajout d'une option pour ajouter/supprimer des octaves. Recherche d'une banques de son pour la flute pour notre synthétiseur. 

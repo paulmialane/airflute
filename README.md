@@ -8,6 +8,7 @@
 - [ ] Ecrire une **breve** présentation du projet
 - [ ] Expliquer quelques points techniques ensuite
 - [ ] Expliquer comment build le projet
+- [ ] Regarder la licence du projet
 
 ##### Tâches liées aux profs :
 - [ ] Demander aux différents prof si c'est OK d'utiliser leur travail et leur demander s'ils souhaitent être mentionnés (associés) au projet

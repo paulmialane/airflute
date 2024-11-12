@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,14 +23,13 @@
  */
 
 
-#include "blowSensor.h"
-
 #include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/adc.h>
 #include <math.h>
 
+#include "blowSensor.h"
 
 static const struct adc_dt_spec adc_a0 =  ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 0);
 

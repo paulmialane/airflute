@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,11 @@
  */
 
 
+#ifndef BLUETOOTHTHREAD_H
+#define BLUETOOTHTHREAD_H
+
 #include <zephyr/kernel.h>
 
 int bluetoothThread(struct k_fifo*);
+
+#endif

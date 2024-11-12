@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,13 +22,13 @@
  * SOFTWARE.
  */
 
-
-#include "buttonStatus.h"
-
 #include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 #include <stdint.h>
+
+#include "buttonStatus.h"
+
 
 #define EXT_GPIO_CTRL_1 DT_NODELABEL(pcf8574_1)
 // structure to control the device

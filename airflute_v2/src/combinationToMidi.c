@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,11 @@
  * SOFTWARE.
  */
 
-#include "combinationToMidi.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 
-
+#include "combinationToMidi.h"
 
 #define NB_BUTTONS 8
 #define NB_NOTES 27

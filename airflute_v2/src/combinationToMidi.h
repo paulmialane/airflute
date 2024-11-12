@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,12 @@
  * SOFTWARE.
  */
 
+#ifndef COMBINATIONTOMIDI_H
+#define COMBINATIONTOMIDI_H
+
 #include <stdint.h>
 
 uint8_t combinationToMidi(uint8_t sensorValues);
 int hammingDistance(uint8_t a, uint8_t b);
+
+#endif

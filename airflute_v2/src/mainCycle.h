@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,11 @@
  * SOFTWARE.
  */
 
+#ifndef MAINCYCLE_H
+#define MAINCYCLE_H
 
 #include <zephyr/kernel.h>
 
 void mainCycleThread(void);
+
+#endif

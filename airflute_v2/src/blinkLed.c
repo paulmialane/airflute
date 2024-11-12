@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,18 +22,17 @@
  * SOFTWARE.
  */
 
-#include "blinkLed.h"
 #include <stdbool.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 
-
+#include "blinkLed.h"
 
 
 ///////////////////////////////blinking a led to be sure it's alive////////////////////////////////////////////////
 
-/* 1000 msec = 1 sec */
+/* 1000 ms = 1 s */
 #define SLEEP_TIME_MS   1000
 
 /* The devicetree node identifier for the "led0" alias. */
@@ -41,7 +40,6 @@
 
 /*
  * A build error on this line means your board is unsupported.
- * See the sample documentation for information on how to fix this.
  */
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 

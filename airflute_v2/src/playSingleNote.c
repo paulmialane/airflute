@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-#include "playSingleNote.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
@@ -30,9 +29,11 @@
 #include <zephyr/bluetooth/gatt.h>
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/sys/ring_buffer.h>
-#include "include/ble_midi/ble_midi.h"
 #include <stdio.h>
+
+#include "playSingleNote.h"
 #include "dataType.h"
+#include "include/ble_midi/ble_midi.h"
 
 /************************ App state ************************/
 K_MSGQ_DEFINE(button_event_q, sizeof(uint8_t), 128, 4);

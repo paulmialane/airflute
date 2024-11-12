@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,9 @@
  * SOFTWARE.
  */
 
+#ifndef DATATYPE_H
+#define DATATYPE_H
+
 #include <stdbool.h>
 
 struct note_data {
@@ -32,4 +35,4 @@ struct note_data {
 	bool on;
 };
 
-
+#endif

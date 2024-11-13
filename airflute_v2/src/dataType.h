@@ -27,6 +27,11 @@
 
 #include <stdbool.h>
 
+/* This is a structure to hold the informations
+ * about a note in the fifo while it waits to 
+ * be processed
+ */
+
 struct note_data {
 	void *fifo_reserved; /* 1st word reserved for use by fifo */
 	int buttons;

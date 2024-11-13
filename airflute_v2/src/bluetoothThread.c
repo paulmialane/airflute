@@ -34,6 +34,16 @@
 #include "bluetoothThread.h"
 
 int bluetoothThread(struct k_fifo* noteToPlayFifo) {
+
+	/*
+	 * This function is running in a separated thread
+	 * and simply handles the bluetooth logic of the program
+	 *
+	 * It waits for a bluetooth connection to be established,
+	 * pulls data from the Fifo, and send it to 
+	 * the bluetooth receptor
+	 */ 
+
 	midiInitialize();
 	printk("----------------\nMidi initialized\n----------------\n\n");
 
@@ -41,7 +51,8 @@ int bluetoothThread(struct k_fifo* noteToPlayFifo) {
 		/*
 		 * Whether we are connected to a device or not, we 
 		 * pull the note from the fifo to avoid to flood
-		 * the fifo with notes to play.
+		 * the fifo with notes to play while waiting
+		 * for a connection.
 		 */ 
 
 		struct note_data *rx_data = k_fifo_get(noteToPlayFifo, K_FOREVER);

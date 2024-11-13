@@ -39,6 +39,15 @@ static const struct device * const ext_gpio_1 = DEVICE_DT_GET(EXT_GPIO_CTRL_1);
 
 gpio_port_value_t val_gpio_1;
 
+/* Sensors are not mapped in the same order on
+ * the I2C bus and in the "natural" way.
+ *
+ * (Understand as : the 3rd hole on the flute isn't 
+ * necessarily the 3rd sensor on the I2C bus)
+ *
+ * This Conversion Table offers a conveniant way
+ * to convert from a view to another.
+ */
 static const unsigned int CT[8] = {
 	(1UL<<4), // button 0
 	(1UL<<5), // button 1
@@ -51,6 +60,12 @@ static const unsigned int CT[8] = {
 };
 
 unsigned int conv(unsigned int in) {
+	
+	/* 
+	 * Convert a combination of inputs (represented as an
+	 * 8 bits unsigned integer) from the viex of the I2C bus
+	 * to the natural way
+	 */
 
 	unsigned int out = 0;
 
@@ -61,8 +76,12 @@ unsigned int conv(unsigned int in) {
 }
 
 
-// A function to check if a button is pressed
 uint8_t getCombination(void){
+
+	/* 
+	 * A function that returns the current combination of
+	 * inputs on the flute
+	 */
 
 	gpio_port_get(ext_gpio_1, &val_gpio_1);
 	

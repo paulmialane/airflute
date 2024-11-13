@@ -60,6 +60,7 @@ struct sample_app_state_t sample_app_state = {
 
 /* Ringbuf/work queue */
 RING_BUF_DECLARE(midi_msg_ringbuf, 128);
+
 static void midi_msg_work_cb(struct k_work *w) {
 
 	uint8_t data[4] = {0, 0, 0, 0};
@@ -166,6 +167,10 @@ void midiInitialize(void) {
 
 
 void sendNote(bool on_off, int note, int force) {
+	
+	/*
+	 * Sends a note to the bluetooth receptor
+	 */
 
 	if (!sample_app_state.sysex_tx_in_progress)	{
 		uint8_t toPlay[3] = {on_off ? 0x90 : 0x80, note, force};

@@ -38,6 +38,10 @@
 
 void mainCycleThread(){
 
+	/*
+	 * This thread handles the logic of the flute
+	 */
+
 	int standard;
 	standard = sensorInit();
 
@@ -46,8 +50,8 @@ void mainCycleThread(){
 
 	struct note_data currentlyPlaying = {.buttons = -1, .note = -1, .on = 0, .strength = -1};
 	/*
-	 *Initialization of the "note we are currently playing" 
-	 *(except we are not playing anything at the beginning, so
+	 * Initialization of the "note we are currently playing" 
+	 * (except we are not playing anything at the beginning, so
 	 * we use impossible values)
 	 */
 

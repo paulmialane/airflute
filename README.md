@@ -51,4 +51,6 @@ Mettre la license dans un fichier `LICENSE` à la racine du projet.
 
 
 
+###### TODO:
 
+- Gerer les erreurs dans les fichiers

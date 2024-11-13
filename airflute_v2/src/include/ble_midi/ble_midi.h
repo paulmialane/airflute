@@ -1,7 +1,7 @@
 /*
  * MIT License
  * 
- * Copyright (c) 2024 Paul MIALANE, Lucas MICHEL, Justine OGER
+ * Copyright (c) 2024  Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
  * This file includes work that is based on or derived from code by Per Gantelius.
  * 
@@ -33,6 +33,7 @@
 
 /** UUID of the BLE MIDI service */
 #define BLE_MIDI_SERVICE_UUID BT_UUID_128_ENCODE(0x03B80E5A, 0xEDE8, 0x4B33, 0xA751, 0x6CE34EC4C700)
+
 /** UUID of the MIDI data I/O characteristic */
 #define BLE_MIDI_CHAR_UUID    BT_UUID_128_ENCODE(0x7772E5DB, 0x3868, 0x4112, 0xA1A9, 0xF2669D106BF3)
 

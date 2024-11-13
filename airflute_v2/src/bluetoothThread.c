@@ -33,34 +33,33 @@
 #include "playSingleNote.h"
 #include "bluetoothThread.h"
 
-int bluetoothThread(struct k_fifo* noteToPlayFifo){
+int bluetoothThread(struct k_fifo* noteToPlayFifo) {
 	midiInitialize();
-	printk("------------------\nMidi initialisé\n------------------\n\n");
+	printk("----------------\nMidi initialized\n----------------\n\n");
 
-	while(1){
+	while(1) {
 		/*
-		Whether we are connected to a device or not, we pull the note from the fifo
-		to avoid to flood the fifo with notes to play.
-		*/ 
+		 * Whether we are connected to a device or not, we 
+		 * pull the note from the fifo to avoid to flood
+		 * the fifo with notes to play.
+		 */ 
 
 		struct note_data *rx_data = k_fifo_get(noteToPlayFifo, K_FOREVER);
 
-		if (isConnectedOverBLE())
-		{
+		if (isConnectedOverBLE()) {
 			/* 
-			If we are connected to a device:
-				- We extract the data from the structure
-				- We play the note
-			*/
+			 * If we are connected to a device:
+			 *   - We extract the data from the structure
+			 *   - We play the note
+			 */
 			int note = rx_data->note;
 			int force = rx_data->strength;
 			bool on = rx_data->on;
 
 			sendNote(on, note, force);
-		}
-		else
-		{
-			/* If we are not connected to a device */
+		} else {
+
+			// If we are not connected to a device
 			printk("Waiting for a connection\n");
 		}
 

@@ -30,7 +30,6 @@
 #include "blinkLed.h"
 
 
-///////////////////////////////blinking a led to be sure it's alive////////////////////////////////////////////////
 
 /* 1000 ms = 1 s */
 #define SLEEP_TIME_MS   1000
@@ -47,6 +46,10 @@ static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 
 void blink(void)
 {
+	/** 
+	 * This functions makes the led0 blinks
+	 */
+
 	int ret;
 	bool led_state = true;
 

@@ -44,34 +44,33 @@
  * const uint8_t C = (1<<0) | (1<<1) | (1<<2) | (1<<3);
  */
 
-// TODO : Définir en static
-const uint8_t CSharp = 0;
-const uint8_t C = (1<<1);
-const uint8_t B = 1;
-const uint8_t Bb = 1 | (1<<3);
-const uint8_t ASharp = 1 | (1<<1) | (1<<3);
-const uint8_t A = 1 | (1<<1);
-const uint8_t GSharp = 1 | (1<<1) | (1<<2) | (1<<3);
-const uint8_t G = 1 | (1<<1) | (1<<2);
-const uint8_t FSharp = 1 | (1<<1) | (1<<2) | (1<<5);
-const uint8_t F = 1 | (1<<1) | (1<<2) | (1<<4);
-const uint8_t E = 1 | (1<<1) | (1<<2) | (1<<4) | (1<<5);
-const uint8_t DSharp = 1 | (1<<1) | (1<<2) | (1<<3) | (1<<4) | (1<<5) | (1<<6);
-const uint8_t D = 1 | (1<<1) | (1<<2) | (1<<4) | (1<<5) | (1<<6);
-const uint8_t CSharpPlus = CSharp | (1<<7);
-const uint8_t CPlus = C | (1<<7);
-const uint8_t BPlus = B | (1<<7);
-const uint8_t BbPlus = Bb | (1<<7);
-const uint8_t ASharpPlus = ASharp | (1<<7);
-const uint8_t APlus = A | (1<<7);
-const uint8_t GSharpPlus = GSharp | (1<<7);
-const uint8_t GPlus = G | (1<<7);
-const uint8_t FSharpPlus = FSharp | (1<<7);
-const uint8_t FPlus = F | (1<<7);
-const uint8_t EPlus = E | (1<<7);
-const uint8_t DSharpPlus = DSharp | (1<<7);
-const uint8_t DPlus = D | (1<<7);
-const uint8_t DPlusPlus = (1<<1) | (1<<2) | (1<<7);
+static const uint8_t CSharp = 0;
+static const uint8_t C = (1<<1);
+static const uint8_t B = 1;
+static const uint8_t Bb = 1 | (1<<3);
+static const uint8_t ASharp = 1 | (1<<1) | (1<<3);
+static const uint8_t A = 1 | (1<<1);
+static const uint8_t GSharp = 1 | (1<<1) | (1<<2) | (1<<3);
+static const uint8_t G = 1 | (1<<1) | (1<<2);
+static const uint8_t FSharp = 1 | (1<<1) | (1<<2) | (1<<5);
+static const uint8_t F = 1 | (1<<1) | (1<<2) | (1<<4);
+static const uint8_t E = 1 | (1<<1) | (1<<2) | (1<<4) | (1<<5);
+static const uint8_t DSharp = 1 | (1<<1) | (1<<2) | (1<<3) | (1<<4) | (1<<5) | (1<<6);
+static const uint8_t D = 1 | (1<<1) | (1<<2) | (1<<4) | (1<<5) | (1<<6);
+static const uint8_t CSharpPlus = CSharp | (1<<7);
+static const uint8_t CPlus = C | (1<<7);
+static const uint8_t BPlus = B | (1<<7);
+static const uint8_t BbPlus = Bb | (1<<7);
+static const uint8_t ASharpPlus = ASharp | (1<<7);
+static const uint8_t APlus = A | (1<<7);
+static const uint8_t GSharpPlus = GSharp | (1<<7);
+static const uint8_t GPlus = G | (1<<7);
+static const uint8_t FSharpPlus = FSharp | (1<<7);
+static const uint8_t FPlus = F | (1<<7);
+static const uint8_t EPlus = E | (1<<7);
+static const uint8_t DSharpPlus = DSharp | (1<<7);
+static const uint8_t DPlus = D | (1<<7);
+static const uint8_t DPlusPlus = (1<<1) | (1<<2) | (1<<7);
 
 /* 
  * A structure to hold the note information.
@@ -87,7 +86,7 @@ const uint8_t DPlusPlus = (1<<1) | (1<<2) | (1<<7);
  *       midiPitch = 72
  *       name = "C"
  */
-// TODO : Definir en static
+
 typedef struct {
     uint8_t keyMask;
     uint8_t midiPitch;
@@ -113,8 +112,7 @@ typedef struct {
 
 #define NOTE_INIT(k, m, n) {.keyMask=k, .midiPitch=((m)&(0xff)), .name=n}
 
-// TODO : définir en static
-const note_t noteArray[NB_NOTES] = {
+static const note_t noteArray[NB_NOTES] = {
     NOTE_INIT(CSharp, 73+OCTAVE*12, "C#"),
     NOTE_INIT(C, 72+OCTAVE*12, "C"),
     NOTE_INIT(B, 71+OCTAVE*12, "B"),

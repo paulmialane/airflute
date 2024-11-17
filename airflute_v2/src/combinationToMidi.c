@@ -33,6 +33,12 @@
 // Whether we want to add or subtract an octave to the note (1/0/-1)
 #define OCTAVE 0
 
+// If you want to correct false combination to possible one
+// Disclaimer : play a real note, but doesn't mean
+// it will sound great...
+
+#define CORRECTION 0
+
 /* Key combination definition.
  * In case we want to change the bindings, all we have to do is
  * change the following constants.
@@ -154,23 +160,24 @@ uint8_t combinationToMidi(uint8_t sensorValues) {
 	 * If none is found, it returns 127.
      */
 
-    for (int i = 0; i < NB_NOTES; i++) {
-        if (noteArray[i].keyMask == sensorValues) {
-            return noteArray[i].midiPitch;
-        }
-    }
+	if (CORRECTION){
+		for (int i = 0; i < NB_NOTES; i++) {
+			if (noteArray[i].keyMask == sensorValues) {
+				return noteArray[i].midiPitch;
+			}
+		}
 
-	// TODO : Find a way to activate or not the correction
-    /*for (int i = 0; i < NB_NOTES; i++) {
-        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 1) {
-            return noteArray[i].midiPitch;
-        }
-    }
-    for (int i = 0; i < NB_NOTES; i++) {
-        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 2) {
-            return noteArray[i].midiPitch;
-        }
-    }*/
+		for (int i = 0; i < NB_NOTES; i++) {
+			if (hammingDistance(sensorValues, noteArray[i].keyMask) == 1) {
+				return noteArray[i].midiPitch;
+			}
+		}
+		for (int i = 0; i < NB_NOTES; i++) {
+			if (hammingDistance(sensorValues, noteArray[i].keyMask) == 2) {
+				return noteArray[i].midiPitch;
+			}
+		}
+	}
     return 127;
 }
 
@@ -184,23 +191,25 @@ const char * fromSensorToPitchName(uint8_t sensorValues) {
 	 * the function looks for a close key combination.
 	 * If none is found, it returns "not a note".
      */
-    for (int i = 0; i < NB_NOTES; i++) {
-        if (noteArray[i].keyMask == sensorValues) {
-            return noteArray[i].name;
-        }
-    }
 
-	// TODO : See previous TODO
-    /*for (int i = 0; i < NB_NOTES; i++) {
-        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 1) {
-            return noteArray[i].midiPitch;
-        }
-    }
-    for (int i = 0; i < NB_NOTES; i++) {
-        if (hammingDistance(sensorValues, noteArray[i].keyMask) == 2) {
-            return noteArray[i].midiPitch;
-        }
-    }*/
+	if (CORRECTION){
+		for (int i = 0; i < NB_NOTES; i++) {
+			if (noteArray[i].keyMask == sensorValues) {
+				return noteArray[i].name;
+			}
+		}
+
+		for (int i = 0; i < NB_NOTES; i++) {
+			if (hammingDistance(sensorValues, noteArray[i].keyMask) == 1) {
+				return noteArray[i].name;
+			}
+		}
+		for (int i = 0; i < NB_NOTES; i++) {
+			if (hammingDistance(sensorValues, noteArray[i].keyMask) == 2) {
+				return noteArray[i].name;
+			}
+		}
+	}
     return "not a note";
 }
 

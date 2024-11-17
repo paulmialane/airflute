@@ -26,17 +26,25 @@
 #define DATATYPE_H
 
 #include <stdbool.h>
+#include <stdint.h>
 
-/* This is a structure to hold the informations
- * about a note in the fifo while it waits to 
- * be processed
+/*
+ * This struct represent a note in the midi format.
+ * It will be stored on the fifo.
+ *
+ * In the MIDI Protocol :
+ *   - A note is  0, ..., 127
+ *   - A strength (actually called velocity) is 0, ..., 127
+ * 
+ * On our flute a there are 8 buttons, and a combination
+ * is represented with a uint8_t.
  */
 
 struct note_data {
 	void *fifo_reserved; /* 1st word reserved for use by fifo */
-	int buttons;
-	int strength;
-	int note;
+	uint8_t buttons; 
+	uint8_t strength;
+	uint8_t note;
 	bool on;
 };
 

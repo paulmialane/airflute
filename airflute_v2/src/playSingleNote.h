@@ -27,7 +27,7 @@
 
 #include <stdbool.h>
 
-void sendNote(bool on_off, int note, int force);
+void sendNote(bool on_off, uint8_t note, uint8_t force);
 void midiInitialize(void);
 int isConnectedOverBLE(void);
 

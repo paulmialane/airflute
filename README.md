@@ -54,3 +54,5 @@ Mettre la license dans un fichier `LICENSE` à la racine du projet.
 ###### TODO:
 
 - Gerer les erreurs dans les fichiers
+- Reecrire la gestion générale 
+    ( Y a des trucs chelou a base de note negative... mauvaise gestion de isPlaying)

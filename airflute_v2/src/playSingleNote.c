@@ -3,6 +3,10 @@
  * 
  * Copyright (c) 2024 Justine OGER, Lucas MICHEL, Paul MIALANE
  * 
+ * This file includes work that is based on or derived from code by Per Gantelius.
+ * 
+ * Original Copyright (c) 2023 Per Gantelius
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -166,7 +170,7 @@ void midiInitialize(void) {
 }
 
 
-void sendNote(bool on_off, int note, int force) {
+void sendNote(bool on_off, uint8_t note, uint8_t force) {
 	
 	/*
 	 * Sends a note to the bluetooth receptor

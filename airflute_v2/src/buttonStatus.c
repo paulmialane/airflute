@@ -48,7 +48,7 @@ gpio_port_value_t val_gpio_1;
  * This Conversion Table offers a conveniant way
  * to convert from a view to another.
  */
-static const unsigned int CT[8] = {
+static const uint8_t CT[8] = {
 	(1UL<<4), // button 0
 	(1UL<<5), // button 1
 	(1UL<<6), // button 2
@@ -59,7 +59,7 @@ static const unsigned int CT[8] = {
 	(1UL<<3), // button 7
 };
 
-unsigned int conv(unsigned int in) {
+uint8_t conv(uint8_t in) {
 	
 	/* 
 	 * Convert a combination of inputs (represented as an
@@ -67,7 +67,7 @@ unsigned int conv(unsigned int in) {
 	 * to the natural way
 	 */
 
-	unsigned int out = 0;
+	uint8_t out = 0;
 
 	for(int i=0;i<8;i++) {
 		if (in & (1UL << i)) out = out | CT[i];

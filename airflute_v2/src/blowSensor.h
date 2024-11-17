@@ -25,9 +25,12 @@
 #ifndef BLOWSENSOR_H
 #define BLOWSENSOR_H
 
+#include <stdint.h>
+#include <stdbool.h>
+
 int sensorInit(void);
-int blowingOnOff(int);
-int blowingStrength(int);
-int strengthCategory(int);
+bool blowingOnOff(int);
+uint8_t blowingStrength(int);
+uint8_t strengthCategory(uint8_t);
 
 #endif

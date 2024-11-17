@@ -44,7 +44,7 @@
  * const uint8_t C = (1<<0) | (1<<1) | (1<<2) | (1<<3);
  */
 
-
+// TODO : Définir en static
 const uint8_t CSharp = 0;
 const uint8_t C = (1<<1);
 const uint8_t B = 1;
@@ -87,7 +87,7 @@ const uint8_t DPlusPlus = (1<<1) | (1<<2) | (1<<7);
  *       midiPitch = 72
  *       name = "C"
  */
-
+// TODO : Definir en static
 typedef struct {
     uint8_t keyMask;
     uint8_t midiPitch;
@@ -111,8 +111,9 @@ typedef struct {
  * NOTE_INIT(C, 72, "C")
  */
 
-#define NOTE_INIT(k, m, n) {.keyMask=k, .midiPitch=(m&(0xff)), .name=n}
+#define NOTE_INIT(k, m, n) {.keyMask=k, .midiPitch=((m)&(0xff)), .name=n}
 
+// TODO : définir en static
 const note_t noteArray[NB_NOTES] = {
     NOTE_INIT(CSharp, 73+OCTAVE*12, "C#"),
     NOTE_INIT(C, 72+OCTAVE*12, "C"),
@@ -206,7 +207,7 @@ const char * fromSensorToPitchName(uint8_t sensorValues) {
 }
 
 
-int hammingDistance(uint8_t a, uint8_t b) {
+uint8_t hammingDistance(uint8_t a, uint8_t b) {
     /*
 	 * This function calculates the Hamming 
 	 * distance between two numbers.
@@ -218,7 +219,7 @@ int hammingDistance(uint8_t a, uint8_t b) {
      * The Hamming distance between 0b1010 and 0b1001 is 2.
      */
 
-    int distance = 0;
+    uint8_t distance = 0;
     uint8_t c = a ^ b;
     while (c) {
         distance++;

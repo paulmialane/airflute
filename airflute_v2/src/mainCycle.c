@@ -27,6 +27,8 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/__assert.h>
+#include <stdbool.h>
+#include <stdint.h>
 
 #include "dataType.h"
 #include "mainCycle.h"
@@ -42,72 +44,53 @@ void mainCycleThread(){
 	 * This thread handles the logic of the flute
 	 */
 
-	int standard;
-	standard = sensorInit();
+	int standard = sensorInit();
 
 	midiInitialize();
 	printk("----------------\nMidi initialized\n----------------\n\n");
 
-	struct note_data currentlyPlaying = {.buttons = -1, .note = -1, .on = 0, .strength = -1};
 	/*
 	 * Initialization of the "note we are currently playing" 
 	 * (except we are not playing anything at the beginning, so
 	 * we use impossible values)
 	 */
 
-	while(1) {
-		k_msleep(50);
-		// We check if we are blowing
-		int isBlowing;
-		isBlowing = blowingOnOff(standard);
+	struct note_data currentlyPlaying = {.buttons = 0, .note = 255, .on = 0, .strength = 255};
 
-		if(isBlowing) {
+	while(1) {
+		// We wait 50ms before looking for a change.
+		k_msleep(50);
+
+		bool isBlowing = blowingOnOff(standard);
+
+		if(isBlowing && currentlyPlaying.on) {
 			/*
 			 * If we are blowing, we get the old combination
-			 * of buttons, then the new and the old strength,
-			 * then the new
+			 * of buttons, then the new and the old strength
 			 */
 
-			int oldCombination = currentlyPlaying.buttons; 
-			uint8_t newCombination;
-			newCombination = getCombination();
-
-			int oldStrength = currentlyPlaying.strength;
-			int newStrength;
-			newStrength= strengthCategory(blowingStrength(standard));
+			uint8_t oldCombination = currentlyPlaying.buttons; 
+			uint8_t newCombination = getCombination();
+			uint8_t oldStrength = currentlyPlaying.strength;
+			uint8_t newStrength = strengthCategory(blowingStrength(standard));
 
 
 			if (oldCombination != newCombination) { 
 				/*
 				 * If the combination changed since the last
-				 * note played (takes into account the case where
-				 * we were not playing beforehand)
+				 * note played
 				 */
 
 				// We stop playing the current note if we are playing
-
-				if (currentlyPlaying.on) { 
-
-					currentlyPlaying.on = 0;
-
-					sendNote(0, currentlyPlaying.note, currentlyPlaying.strength);
-
-					currentlyPlaying.buttons = -1;
-					currentlyPlaying.note = -1;
-					currentlyPlaying.strength = -1;
-				}
+				sendNote(false, currentlyPlaying.note, currentlyPlaying.strength);
 
 				// Now that we stopped the note, we play the new one
-
-				uint8_t newNote;
-				newNote = combinationToMidi(newCombination);
-
+				uint8_t newNote = combinationToMidi(newCombination);
 				currentlyPlaying.buttons = newCombination;
 				currentlyPlaying.note = newNote;
-				currentlyPlaying.on = true;
 				currentlyPlaying.strength = newStrength;
 
-				sendNote(true, currentlyPlaying.note, currentlyPlaying.strength);
+				sendNote(currentlyPlaying.on, currentlyPlaying.note, currentlyPlaying.strength);
 
 			}
 
@@ -129,38 +112,38 @@ void mainCycleThread(){
 
 					sendNote(false, currentlyPlaying.note, currentlyPlaying.strength);
 
-					sendNote(true, currentlyPlaying.note, currentlyPlaying.strength);
+					sendNote(currentlyPlaying.on, currentlyPlaying.note, currentlyPlaying.strength);
 				}
-
-				/*
-				 * If the combination of sensors stayed 
-				 * the same and the overall strength stayed the same,
-				 * we just don't change anything
-				 */
 			}
 
-		}
+		} else if(isBlowing && (!currentlyPlaying.on)) {
+			
+			/*
+			 * If we are blowing but were not already playing a note
+			 */
 
-		else {
+			uint8_t newCombination = getCombination();
+			uint8_t newStrength = strengthCategory(blowingStrength(standard));
+			uint8_t	newNote = combinationToMidi(newCombination);
+
+			currentlyPlaying.buttons = newCombination;
+			currentlyPlaying.note = newNote;
+			currentlyPlaying.on = true;
+			currentlyPlaying.strength = newStrength;
+
+			sendNote(true, currentlyPlaying.note, currentlyPlaying.strength);
+
+		} else {
 
 			// If we are not blowing, we stop playing the note
 			if (currentlyPlaying.on) { 
-					// If we were playing a note, we stop playing it
 
-					/* TODO: EST CE QUE CE COMMENTAIRE EST UTILE?
-					 * Modification de currentlyPlaying pour éviter
-					 * des problèmes : on n'est rien en train de
-					 * jouer, donc on indique avec on=0 et buttons=-1
-					 */
+				sendNote(false, currentlyPlaying.note,
+						currentlyPlaying.strength);
 
-					currentlyPlaying.on = false;
-					currentlyPlaying.buttons = -1;
-
-					sendNote(false, currentlyPlaying.note, currentlyPlaying.strength);
-
-					currentlyPlaying.note = -1;
-					currentlyPlaying.strength = -1;
 			}
+
+			currentlyPlaying.on = false;
 		}
 	}
 }

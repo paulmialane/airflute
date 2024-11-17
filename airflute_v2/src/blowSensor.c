@@ -28,12 +28,15 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/adc.h>
 #include <math.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 #include "blowSensor.h"
 
 static const struct adc_dt_spec adc_a0 =  ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 0);
 
-int sensor_threshold = 35;
+// TODO : Declarer en static
+const int sensor_threshold = 35;
 
 // une seule donnée de 16bits
 int16_t buf = 33;
@@ -76,13 +79,13 @@ int sensorInit(void) {
 		k_msleep(10);
 	}
 
-	const int standard = (int) mean/length;
+	int standard = (int) mean/length;
 	printk("Sensor initialized with standard value %i\n", standard);
 
 	return standard;
 }
 
-int filter(int data, int standard) {
+uint8_t filter(int data, int standard) {
 	//pas mal de travail ici
 	if (data > standard - sensor_threshold) {
 		return 0;
@@ -90,7 +93,7 @@ int filter(int data, int standard) {
 		return 127;
 	}
 
-	return standard - data - sensor_threshold;
+	return (uint8_t)(standard - data - sensor_threshold);
 }
 
 
@@ -101,30 +104,28 @@ int filter(int data, int standard) {
 
 /// fonctions
 
-int blowingOnOff(int standard){
+bool blowingOnOff(int standard){
 
 	int err;
 	err = adc_read(adc_a0.dev, &sequence);
 
 	int data_out = 0;
 	if (err < 0) {
+		// TODO : Handle error
 		printk("Error reading the ADC (#%d)", err);
+		return 0;
 	}
 	else {
 		data_out = filter(buf, standard);
-		if (data_out) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return data_out;
 	}
 }
 
-int blowingStrength(int standard){
+uint8_t blowingStrength(int standard){
 	int err;
 	err = adc_read(adc_a0.dev, &sequence);
 
-	int data_out = 0;
+	uint8_t data_out = 0;
 	if (err < 0) {
 		printk("Error reading the ADC (#%d)", err);
 	}
@@ -135,8 +136,11 @@ int blowingStrength(int standard){
 	return data_out;
 }
 
-int strengthCategory(int strength){
-	int category;
+uint8_t strengthCategory(uint8_t strength){
+	/*
+	 * We define 3 different strengths, based on the value of strength between 0 ad 127.
+	 */
+
 	if (strength < 60){
 		return 50;
 	}

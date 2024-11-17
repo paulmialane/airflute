@@ -28,6 +28,7 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/__assert.h>
+#include <stdint.h>
 
 #include "dataType.h"
 #include "playSingleNote.h"
@@ -64,7 +65,7 @@ int bluetoothThread(struct k_fifo* noteToPlayFifo) {
 			 *   - We play the note
 			 */
 			int note = rx_data->note;
-			int force = rx_data->strength;
+			uint8_t force = rx_data->strength;
 			bool on = rx_data->on;
 
 			sendNote(on, note, force);

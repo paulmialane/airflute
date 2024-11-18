@@ -1,10 +1,10 @@
 # Airflute  :notes:
 
-Airflute is a home-made flute synthetizer over bluetooth, that was realized as
+Airflute is a home-made flute synthesizer over bluetooth, that was realized as
 part of the [ARTISHOW](https://artishow.r2.enst.fr/) project at [Télécom
 Paris](https://www.telecom-paris.fr/en/home). It has the shape of a flute, and
 uses the MIDI protocol and a Bluetooth Lower Energy (BLE) connection to send
-notes to your favourite synthethiser software on your computer. 
+notes to your favourite synthesiser software on your computer. 
 
 It can be used to:
 

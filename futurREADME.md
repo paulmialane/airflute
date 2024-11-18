@@ -173,7 +173,7 @@ regular flute. Actually, it's inspired from a saxophone (still with some modific
 
 Here are the fingerings implemented (the octave key at the back of the flute isn't pictured): 
 
-[The fingerings](imgs/fingerings.png)
+![The fingerings](imgs/fingerings.png)
 
 You can actually create your own fingerings by modifying the
 [combinationToMidi.c](src/combinationToMidi.c) file.

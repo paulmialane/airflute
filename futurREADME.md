@@ -1,14 +1,14 @@
 # Airflute  :notes:
 
-Airflute is a school project, where we created a home-made flute synthetizer
-over bluetooth. It has the shape of a flute, and uses the MIDI protocol and a
-Bluetooth Lower Energy (BLE) connection to send notes to your favourite
-synthethiser software on your computer. 
+Airflute is a home-made flute synthetizer over bluetooth, that was realized as
+part of the [ARTISHOW](https://artishow.r2.enst.fr/) project at [Télécom
+Paris](https://www.telecom-paris.fr/en/home). It has the shape of a flute, and
+uses the MIDI protocol and a Bluetooth Lower Energy (BLE) connection to send
+notes to your favourite synthethiser software on your computer. 
 
 It can be used to:
 
-- Play the flute (Wow!)
-- Play almost any instrument you like while only knowing how to play the flute
+- Play almost any instrument you like while only knowing how to play the flute.
 - Learn music without causing bleeding ears to everyone (because you can use
   your headphones on your computer, and you'll be the only one to hear your
   awfull music)
@@ -33,11 +33,12 @@ the [Nordic XIAO BLE SENSE](https://wiki.seeedstudio.com/XIAO_BLE/) board.
 
 We used:
 - a [XIAO BLE SENSE](https://wiki.seeedstudio.com/XIAO_BLE/)
-- some [phototransistors](https://www.vishay.com/en/product/83751/) (I couldn't
+- some [phototransistors](https://www.vishay.com/en/product/83751/) (We couldn't
   find the exact ref on Vishay, [here](https://www.mouser.fr/ProductDetail/Vishay-Semiconductors/CNY70?qs=%2Fjqivxn91cdreAm7vR28%252BA%3D%3D)
   are the exact ones we used).
 - an I/O expander [PCF8574](https://www.ti.com/product/PCF8574?utm_source=google&utm_medium=cpc&utm_campaign=asc-null-null-GPN_EN-cpc-pf-google-eu&utm_content=PCF8574&ds_k=PCF8574&DCM=yes&gad_source=1&gclid=Cj0KCQiA6Ou5BhCrARIsAPoTxrDwcCHukND1BMma5ikjd33tWuuZgeDsfNfS1Qkl7ALI4S8Av42yHtQaApNOEALw_wcB&gclsrc=aw.ds)
 - a 3D printer, and some additionnal crafting stuffs
+
 
 To detect the fingers on the holes of the flute, we uses the phototransistors.
 A regular flute should have 10 holes. The thing is, on a real flute overlay,
@@ -51,7 +52,10 @@ use a I/O expander controled with i2c. In case you want to add more holes, you
 only have to chain the expanders (up to 8), and rewrite a portion of the code.
 
 We also needed to know if somebody is blowing into the flute or note. We decided
-to make our own sensor using the phototransistors and a membrane made of balloon.
+to make our own sensor, inspired by [this youtube
+video](https://www.youtube.com/watch?v=es92GqYBge0) by
+[KontinuumLAB](https://www.youtube.com/@KontinuumLAB), using the
+phototransistors and a membrane made of balloon.
 If you blow, the membrane expands and is closer to the phototransistor. We then
 read the sensor using the ADC, and can, with calibration, decide the intensity of
 the blow.

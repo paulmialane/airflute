@@ -8,11 +8,11 @@
 
 :warning: **Attention** : Tout écrire en anglais
 
-- [ ] Ecrire une **breve** présentation du projet ([Précisions](#présentation-du-projet))
+- [x] Ecrire une **breve** présentation du projet ([Précisions](#présentation-du-projet))
 - [ ] Expliquer quelques points techniques ensuite ([Précisions](#points-techniques))
 
 ##### Tâches liées aux profs :
-- [ ] Demander aux différents prof si c'est OK d'utiliser leur travail et leur demander s'ils souhaitent être mentionnés (associés) au projet
+- [x] Demander aux différents prof si c'est OK d'utiliser leur travail et leur demander s'ils souhaitent être mentionnés (associés) au projet
 
 ##### Tâches liées au code :
 - [ ] Trier l'ensemble des fichiers nécessaires au projet
@@ -33,7 +33,6 @@ Liste des points techniques à expliquer :
 - Comment configurer le projet
 
 - Quels sont les doigtés pour jouer de la flûte
-- Comment construire le capteur de souffle
-- Quels sont les capteurs optiques et comment sont ils branchés
-- Comment brancher la batterie
+- [x] Comment construire le capteur de souffle
+- [x] Quels sont les capteurs optiques et comment sont ils branchés
 

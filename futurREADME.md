@@ -19,14 +19,13 @@ the [Nordic XIAO BLE SENSE](https://wiki.seeedstudio.com/XIAO_BLE/) board.
 
 ## Table of Contents
 
-- Airflute
-  - [Table of Contents](#table-of-contents)
-  - [Creating the flute](#creating-the-flute)
-  - [Building the project](#building-the-project)
+- [Table of Contents](#table-of-contents)
+- [Creating the flute](#creating-the-flute)
+- [Building the project](#building-the-project)
     - [Requirements](#requirements)
     - [Building the project](#building-the-project-1)
-    - [Playing the flute](#playing-the-flute)
-  - [Contact us](#contact-us)
+- [Playing the flute](#playing-the-flute)
+- [Contact us](#contact-us)
 
 
 ## Creating the flute
@@ -37,6 +36,7 @@ We used:
   find the exact ref on Vishay, [here](https://www.mouser.fr/ProductDetail/Vishay-Semiconductors/CNY70?qs=%2Fjqivxn91cdreAm7vR28%252BA%3D%3D)
   are the exact ones we used).
 - an I/O expander [PCF8574](https://www.ti.com/product/PCF8574?utm_source=google&utm_medium=cpc&utm_campaign=asc-null-null-GPN_EN-cpc-pf-google-eu&utm_content=PCF8574&ds_k=PCF8574&DCM=yes&gad_source=1&gclid=Cj0KCQiA6Ou5BhCrARIsAPoTxrDwcCHukND1BMma5ikjd33tWuuZgeDsfNfS1Qkl7ALI4S8Av42yHtQaApNOEALw_wcB&gclsrc=aw.ds)
+- A 3.7V 250mAh Lithium Battery to power the flute.
 - a 3D printer, and some additionnal crafting stuffs
 
 
@@ -130,44 +130,53 @@ to the device using the file explorer.
 
 ## Playing the flute
 
+### Connecting the flute
+
 1. Install a synthesizer on your computer that can connect to MIDI devices.
    Depending on the software you might need to install a soundfont to get the
-   flute sound. For a simple use on Linux we recommend installing `qsynth` and
+   flute sound. For a simple use on Linux we recommend installing [QSynth](https://qsynth.sourceforge.io/) and
    adding the soundfont of your choice.
 
-Alternatively, you can use an android app that can connect to MIDI devices. We
-recommend using `FluidSynth MIDI Synthesizer` available on the Play Store.
+   Alternatively, you can use an android app that can connect to MIDI devices. We
+   recommend using `FluidSynth MIDI Synthesizer` available on the Play Store.
 
-> Note: We also tested on MAC OS with GarageBand but found that the latency was
-> quite high compared to qsynth on Linux.
+> Note: We also tested on MAC OS with GarageBand but had some latency problem we
+> didn't have on QSynth. We didn't test on Windows.
 
 > Fun part : Don't restrict yourself to flute sounds, you can use any soundfont
 > you like. You can play the trumpet, the saxophone, the piano, the drums, etc.
 > The flute acts as a synthesizer and can play any sound you want.
 
 2. Be sure the flute is powered on, whether it is connected to the computer
-   with the USB cable or powered by the battery.
+   with the USB cable or powered by a battery.
 
-3. Connect to the XIAO BLE SENSE board using Bluetooth on Linux or Mac. The
+3. Connect to the XIAO BLE SENSE board using Bluetooth on your device. The
    device should appear as `Airflute` in the list of available devices. 
 
 4. Open the synthesizer software and select the MIDI device as the input.
 
-5. Have fun playing the flute!
+5. Have fun playing the flute !
 
 6. Optionally, if you are connected to the computer with the USB cable, you can
    also use the serial port to see the logs and debug the project.
 
-On Linux with `tio` and the right permissions:
-```bash
-tio /dev/ttyACM0
-```
-
-On Windows with `PuTTY` for instance.
-
 > Note: Sadly, we were not able to make the Bluetooth connection work on
 > Windows. If you have any idea on how to make it work, feel free to
 > contribute.
+
+### How to play
+
+As mentionned in the [Building the flute](#building-the-flute) section,
+we are not really creating a flute, as the layout isn't the right one. Instead of using
+10 holes, we are only using 8 holes, and so the fingerings are a bit different from a
+regular flute. Actually, it's inspired from a saxophone (still with some modifications).
+
+Here are the fingerings implemented (the octave key at the back of the flute isn't pictured): 
+
+[The fingerings](imgs/fingerings.png)
+
+You can actually create your own fingerings by modifying the
+[combinationToMidi.c](src/combinationToMidi.c) file.
 
 ## Contact us
 

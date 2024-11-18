@@ -65,8 +65,8 @@ to the number of sensor, and the expander), we decide to make a PCB, on which we
 welded all the components. You can find it [here](#).
 
 Of course, we want our flute to look like one, and not just sensors wired to a
-board, so we 3D printed the mouthpiece [mouthpiece.stl](#), a body
-[body.stl](#), and a horn [horn.stl](#). Alternatively, you can use a PVC pipe
+board, so we 3D printed the mouthpiece [mouthpiece.stl](hardware/mouthpiece.stl), a body
+[body.stl](hardware/body.stl), and a horn [horn.stl](hardware/horn.stl). Alternatively, you can use a PVC pipe
 for the body.
 
 

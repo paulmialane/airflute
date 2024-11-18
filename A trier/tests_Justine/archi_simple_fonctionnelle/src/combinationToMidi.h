@@ -1,3 +1,0 @@
-
-
-int toMidi(int);

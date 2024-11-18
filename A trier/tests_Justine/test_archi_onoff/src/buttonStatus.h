@@ -1,3 +1,0 @@
-
-
-void getCombination(int*);

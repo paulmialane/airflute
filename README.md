@@ -11,7 +11,7 @@ It can be used to:
 - Play almost any instrument you like while only knowing how to play the flute.
 - Learn music without causing bleeding ears to everyone (because you can use
   your headphones on your computer, and you'll be the only one to hear your
-  awfull music)
+  awful music)
 
 It was created using the [Zephyr RTOS Project](https://zephyrproject.org/) on
 the [Nordic XIAO BLE SENSE](https://wiki.seeedstudio.com/XIAO_BLE/) board.
@@ -176,7 +176,7 @@ Here are the fingerings implemented (the octave key at the back of the flute isn
 ![The fingerings](imgs/fingerings.png)
 
 You can actually create your own fingerings by modifying the
-[combinationToMidi.c](src/combinationToMidi.c) file.
+[combinationToMidi.c](software/src/combinationToMidi.c) file.
 
 ## Contact us
 
